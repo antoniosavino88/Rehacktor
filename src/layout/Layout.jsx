@@ -12,7 +12,7 @@ export default function Layout() {
         <Sidebar />
       </div>
 
-      <main className="style-main-content min-h-screen ml-64 flex-1 p-6 bg-gradient-to-b from-slate-900 to-slate-800">
+      <main className="style-main-content min-h-screen ml-64 flex-1 p-6 bg-gradient-to-b from-slate-900 to-slate-800 mt-15">
         <Outlet />
       </main>
 

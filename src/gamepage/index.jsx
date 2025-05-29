@@ -1,0 +1,53 @@
+import { useParams } from "react-router";
+import useFetch from "../hooks/useFetch";
+import Spinner from "../components/Spinner";
+
+export default function GamePage() {
+  const { id } = useParams();
+  const url = `https://api.rawg.io/api/games/${id}?key=d3b1df65b58748b0995c8ac8aec8c20a`;
+  const { data, isPending, error } = useFetch(url);
+
+  return (
+    <>
+      {isPending && (
+        <div className="flex justify-center items-center h-screen">
+          <Spinner />
+        </div>
+      )}
+
+      {error && (
+        <div className="flex justify-center items-center h-screen text-red-500">
+          <h1>{error}</h1>
+        </div>
+      )}
+
+      {data && (
+        <div className="flex flex-col lg:flex-row items-start gap-8 bg-slate-900 text-white p-8 rounded-lg shadow-xl">
+          {/* Info Gioco */}
+          <div className="flex-1 space-y-4">
+            <p className="text-sm text-gray-400">📅 {data.released}</p>
+            <h1 className="text-3xl font-bold">{data.name}</h1>
+            <p className="text-yellow-400 text-sm font-semibold">
+              ⭐ Rating: {data.rating}
+            </p>
+            <div>
+              <p className="text-lg font-semibold mb-1">About:</p>
+              <p className="text-gray-300 leading-relaxed">
+                {data.description_raw}
+              </p>
+            </div>
+          </div>
+
+          {/* Immagine */}
+          <div className="w-full lg:w-1/2 overflow-hidden shadow-lg">
+            <img
+              src={data.background_image}
+              alt={data.name}
+              className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+        </div>
+      )}
+    </>
+  );
+}

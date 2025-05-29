@@ -13,7 +13,7 @@ export default function Header() {
         <ul className="hidden md:flex items-center space-x-6 ml-auto">
           <li>
             <a
-              href="#"
+              href="/"
               className="hover:text-blue-400 transition-colors duration-200"
             >
               Home

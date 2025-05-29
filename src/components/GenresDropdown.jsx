@@ -1,5 +1,6 @@
 import useFetch from "../hooks/useFetch";
 import Spinner from "./Spinner";
+import { Link } from "react-router";
 
 export default function GenresDropdown() {
   const url =
@@ -29,7 +30,7 @@ export default function GenresDropdown() {
               key={genre.id}
               className="cursor-pointer hover:bg-slate-700 px-3 py-1.5 transition duration-200"
             >
-              {genre.name}
+              <Link to={`/games/${genre.slug}`}>{genre.name}</Link>
             </li>
           ))}
       </ul>
