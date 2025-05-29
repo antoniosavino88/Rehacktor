@@ -1,3 +1,4 @@
+import LazyLoadGameImage from "../components/LazyLoadGameImage";
 export default function CardGame({ game }) {
   const genres = game.genres.map((genre) => genre.name).join(", ");
 
@@ -5,13 +6,9 @@ export default function CardGame({ game }) {
     <div className="flex justify-center my-8">
       <article
         key={game.id}
-        className="bg-slate-800 text-white rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl max-w-sm"
+        className="bg-slate-800 text-white rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl max-w-sm w-2/3"
       >
-        <img
-          src={game.background_image}
-          alt={game.name}
-          className="w-full h-48 object-cover"
-        />
+        <LazyLoadGameImage image={game.background_image} />
 
         <div className="p-5">
           <h2 className="text-xl font-bold mb-1">{game.name}</h2>
