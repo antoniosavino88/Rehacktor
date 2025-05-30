@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
-import useFetch from "../hooks/useFetch";
-import Spinner from "../components/Spinner";
+import useFetch from "../../hooks/useFetch";
+import Spinner from "../../components/Spinner";
 
 export default function GamePage() {
   const { id } = useParams();

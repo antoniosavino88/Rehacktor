@@ -8,7 +8,7 @@ export default function GenresDropdown() {
   const { data, isPending, error } = useFetch(url);
 
   return (
-    <aside className="fixed top-0 left-0 w-64 h-screen bg-slate-800 text-white p-6 shadow-lg overflow-y-auto z-50 scrollbar-hide">
+    <div>
       <h2 className="text-2xl font-semibold mb-6 border-b pb-2 border-slate-600">
         Generi
       </h2>
@@ -34,6 +34,6 @@ export default function GenresDropdown() {
             </li>
           ))}
       </ul>
-    </aside>
+    </div>
   );
 }

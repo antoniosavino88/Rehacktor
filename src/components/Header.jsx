@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -12,12 +13,12 @@ export default function Header() {
         {/* Desktop Navigation */}
         <ul className="hidden md:flex items-center space-x-6 ml-auto">
           <li>
-            <a
-              href="/"
+            <Link
+              to="/"
               className="hover:text-blue-400 transition-colors duration-200"
             >
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <a

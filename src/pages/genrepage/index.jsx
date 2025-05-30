@@ -10,10 +10,10 @@
 //   );
 // }
 
-import useFetch from "../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router";
-import CardGame from "../components/CardGame";
-import Spinner from "../components/Spinner";
+import CardGame from "../../components/CardGame";
+import Spinner from "../../components/Spinner";
 
 export default function GenrePage() {
   const { genre } = useParams();
