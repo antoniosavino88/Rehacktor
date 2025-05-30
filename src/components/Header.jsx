@@ -6,7 +6,7 @@ export default function Header() {
 
   return (
     <nav className="bg-slate-800 text-white px-6 py-4 shadow-md fixed top-0 left-0 right-0 z-1">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className=" mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="text-2xl font-bold tracking-wide">Rehacktor</div>
 

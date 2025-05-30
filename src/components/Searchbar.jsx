@@ -20,7 +20,7 @@ export default function Searchbar() {
     <form onSubmit={handleSearch} className="max-w-md mx-auto my-6">
       <fieldset
         role="group"
-        className="flex rounded-full overflow-hidden shadow-md bg-slate-800 border border-slate-700 focus-within:ring-2 focus-within:ring-blue-500"
+        className="flex rounded-full overflow-hidden shadow-md bg-slate-800 border border-slate-700 focus-within:ring-2 focus-within:ring-yellow-500"
       >
         <input
           type="text"
@@ -34,7 +34,7 @@ export default function Searchbar() {
         <input
           type="submit"
           value="Go"
-          className="px-5 py-2 bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors duration-200 cursor-pointer rounded-r-full"
+          className="px-5 py-2 bg-yellow-500 text-blue-900 font-semibold hover:bg-yellow-600 transition-colors duration-200 cursor-pointer rounded-r-full"
         />
       </fieldset>
     </form>

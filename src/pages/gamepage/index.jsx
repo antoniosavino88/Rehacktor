@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import useFetch from "../../hooks/useFetch";
-import Spinner from "../../components/Spinner";
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 export default function GamePage() {
   const { id } = useParams();
@@ -11,7 +11,7 @@ export default function GamePage() {
     <>
       {isPending && (
         <div className="flex justify-center items-center h-screen">
-          <Spinner />
+          <PacmanLoader color="#FBBF24" />{" "}
         </div>
       )}
 
@@ -20,7 +20,6 @@ export default function GamePage() {
           <h1>{error}</h1>
         </div>
       )}
-
       {data && (
         <div className="flex flex-col lg:flex-row items-start gap-8 bg-slate-900 text-white p-8 rounded-lg shadow-xl">
           {/* Info Gioco */}

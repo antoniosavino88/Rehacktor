@@ -28,7 +28,7 @@ export default function GenresDropdown() {
           data.results.map((genre) => (
             <li
               key={genre.id}
-              className="cursor-pointer hover:bg-slate-700 px-3 py-1.5 transition duration-200"
+              className="cursor-pointer hover:bg-slate-700 px-3 my-1.5 transition duration-200"
             >
               <Link to={`/games/${genre.slug}`}>{genre.name}</Link>
             </li>

@@ -16,10 +16,11 @@ export default function CardGame({ game }) {
           <h2 className="text-xl font-bold mb-1">{game.name}</h2>
           <p className="text-sm text-gray-400 mb-2 italic">{genres}</p>
           <p className="text-sm mb-4">Rilasciato: {game.released}</p>
-
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full transition duration-300">
-            <Link to={`/games/${game.slug}/${game.id}`}>Dettagli</Link>
-          </button>
+          <div className="flex justify-end">
+            <button className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-semibold py-2 px-4 rounded-full transition duration-300">
+              <Link to={`/games/${game.slug}/${game.id}`}>Vai al gioco</Link>
+            </button>
+          </div>
         </div>
       </article>
     </div>

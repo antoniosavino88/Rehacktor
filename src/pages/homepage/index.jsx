@@ -1,6 +1,7 @@
 import useFetch from "../../hooks/useFetch";
 import CardGame from "../../components/CardGame";
 import Spinner from "../../components/Spinner";
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 export default function HomePage() {
   const url = `https://api.rawg.io/api/games?key=d3b1df65b58748b0995c8ac8aec8c20a&dates=2024-01-01,2024-12-31&page=1`;
@@ -11,7 +12,13 @@ export default function HomePage() {
       <h1 className="text-3xl font-bold text-white my-10">
         Nuovi e di tendenza
       </h1>
-      {isPending && <Spinner />}
+
+      {isPending && (
+        <div className="flex justify-center items-center min-h-[200px]">
+          <PacmanLoader color="#FBBF24" />{" "}
+        </div>
+      )}
+
       <div className="grid-games-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {error && <article>{error}</article>}
         {data &&
