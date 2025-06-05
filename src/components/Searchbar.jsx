@@ -34,7 +34,7 @@ export default function Searchbar() {
         <input
           type="submit"
           value="Go"
-          className="px-5 py-2 bg-yellow-500 text-blue-900 font-semibold hover:bg-yellow-600 transition-colors duration-200 cursor-pointer rounded-r-full"
+          className="px-5 py-2 bg-yellow-500 text-slate-800 font-semibold hover:bg-yellow-600 transition-colors duration-200 cursor-pointer rounded-r-full"
         />
       </fieldset>
     </form>

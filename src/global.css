@@ -9,3 +9,9 @@
   -ms-overflow-style: none; /* IE e Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #334155 inset; /* slate-700 */
+  -webkit-text-fill-color: #fff; /* testo bianco */
+  transition: background-color 5000s ease-in-out 0s;
+}

@@ -1,8 +1,31 @@
-import { useState } from "react";
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import supabase from "../supabase/supabase-client";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [session, setSession] = useState(null);
+
+  const getSession = async () => {
+    const { data } = await supabase.auth.getSession();
+    if (data.session) {
+      console.log(data); // mostra l'oggetto della sessione aperta dopo la registrazione
+      setSession(data);
+    } else {
+      setSession(null);
+    }
+  };
+
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) console.log(error);
+    alert("Signed out!");
+    getSession();
+  };
+
+  useEffect(() => {
+    getSession();
+  }, []);
 
   return (
     <nav className="bg-slate-800 text-white px-6 py-4 shadow-md fixed top-0 left-0 right-0 z-1">
@@ -28,31 +51,59 @@ export default function Header() {
               Services
             </a>
           </li>
-          <li className="relative group">
-            <button className="flex items-center gap-1 hover:text-blue-400 transition-colors duration-200">
-              Account
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                <path d="M5.25 7.5L10 12.25L14.75 7.5H5.25Z" />
-              </svg>
-            </button>
-            <ul className="absolute right-0 mt-2 w-40 bg-white text-slate-800 shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-300 z-50">
+          {session ? (
+            <li className="relative group">
+              <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-slate-800 hover:bg-slate-700 text-white font-medium transition">
+                Account
+                <svg
+                  className="w-4 h-4 transform group-hover:rotate-180 transition"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <ul className="absolute right-0 mt-2 w-40 bg-slate-800 text-white rounded-md shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
+                <li>
+                  <a
+                    href="#"
+                    className="block px-4 py-2 hover:bg-slate-700 transition"
+                  >
+                    Settings
+                  </a>
+                </li>
+                <li>
+                  <button
+                    onClick={signOut}
+                    className="block px-4 py-2 hover:bg-slate-700 transition"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </li>
+          ) : (
+            <>
               <li>
-                <a href="#" className="block px-4 py-2 hover:bg-slate-100">
-                  Profile
-                </a>
+                <Link
+                  to="/login"
+                  className="px-4 py-2 rounded-md text-yellow-400 hover:text-yellow-300 font-medium transition"
+                >
+                  Login
+                </Link>
               </li>
               <li>
-                <a href="#" className="block px-4 py-2 hover:bg-slate-100">
-                  Settings
-                </a>
+                <Link
+                  to="/register"
+                  className="px-4 py-2 rounded-md bg-yellow-500 hover:bg-yellow-400 text-slate-800 font-semibold transition"
+                >
+                  Register
+                </Link>
               </li>
-              <li>
-                <a href="#" className="block px-4 py-2 hover:bg-slate-100">
-                  Logout
-                </a>
-              </li>
-            </ul>
-          </li>
+            </>
+          )}
         </ul>
 
         {/* Hamburger Icon (Mobile) */}

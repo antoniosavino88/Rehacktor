@@ -1,11 +1,11 @@
-import useFetch from "../hooks/useFetch";
+import useFetchSolution from "../hooks/useFetch";
 import Spinner from "./Spinner";
 import { Link } from "react-router";
 
 export default function GenresDropdown() {
-  const url =
-    "https://api.rawg.io/api/genres?key=d3b1df65b58748b0995c8ac8aec8c20a";
-  const { data, isPending, error } = useFetch(url);
+  const initialUrl =
+    "https://api.rawg.io/api/genres?key=2a8cb120892248bd952e976161641d53";
+  const { data, loading, error } = useFetchSolution(initialUrl);
 
   return (
     <div>
@@ -13,7 +13,7 @@ export default function GenresDropdown() {
         Generi
       </h2>
 
-      {isPending && (
+      {loading && (
         <div className="flex justify-center items-center h-20">
           <Spinner />
         </div>

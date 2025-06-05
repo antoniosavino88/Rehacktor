@@ -1,15 +1,15 @@
 import { useParams } from "react-router";
-import useFetch from "../../hooks/useFetch";
 import PacmanLoader from "react-spinners/PacmanLoader";
+import useFetchSolution from "../../hooks/useFetch";
 
 export default function GamePage() {
   const { id } = useParams();
-  const url = `https://api.rawg.io/api/games/${id}?key=d3b1df65b58748b0995c8ac8aec8c20a`;
-  const { data, isPending, error } = useFetch(url);
+  const initialUrl = `https://api.rawg.io/api/games/${id}?key=2a8cb120892248bd952e976161641d53`;
+  const { data, loading, error } = useFetchSolution(initialUrl);
 
   return (
     <>
-      {isPending && (
+      {loading && (
         <div className="flex justify-center items-center h-screen">
           <PacmanLoader color="#FBBF24" />{" "}
         </div>
