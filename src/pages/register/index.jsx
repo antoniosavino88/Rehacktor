@@ -179,7 +179,7 @@ export default function RegisterPage() {
 
         <button
           type="submit"
-          className="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-800 font-semibold py-2 px-4 rounded-md transition duration-300"
+          className="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-800 font-semibold py-2 px-4 rounded-md transition duration-300 cursor-pointer"
         >
           Registrati
         </button>

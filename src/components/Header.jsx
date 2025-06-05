@@ -1,31 +1,20 @@
-import { Link } from "react-router";
-import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import supabase from "../supabase/supabase-client";
+import SessionContext from "../context/SessionContext.js";
+import { useContext } from "react";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [session, setSession] = useState(null);
-
-  const getSession = async () => {
-    const { data } = await supabase.auth.getSession();
-    if (data.session) {
-      console.log(data); // mostra l'oggetto della sessione aperta dopo la registrazione
-      setSession(data);
-    } else {
-      setSession(null);
-    }
-  };
+  const navigate = useNavigate();
+  const { session } = useContext(SessionContext);
 
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) console.log(error);
-    alert("Signed out!");
-    getSession();
+    alert("Signed out ✌️");
+    navigate("/");
   };
-
-  useEffect(() => {
-    getSession();
-  }, []);
 
   return (
     <nav className="bg-slate-800 text-white px-6 py-4 shadow-md fixed top-0 left-0 right-0 z-1">
@@ -54,7 +43,11 @@ export default function Header() {
           {session ? (
             <li className="relative group">
               <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-slate-800 hover:bg-slate-700 text-white font-medium transition">
-                Account
+                Ciao{" "}
+                <span className=" text-yellow-400">
+                  {session.user.user_metadata.first_name}
+                </span>
+                {console.log(session)}
                 <svg
                   className="w-4 h-4 transform group-hover:rotate-180 transition"
                   fill="none"
@@ -75,12 +68,12 @@ export default function Header() {
                   </a>
                 </li>
                 <li>
-                  <button
+                  <a
                     onClick={signOut}
-                    className="block px-4 py-2 hover:bg-slate-700 transition"
+                    className="block px-4 py-2 hover:bg-slate-700 transition cursor-pointer"
                   >
                     Logout
-                  </button>
+                  </a>
                 </li>
               </ul>
             </li>
@@ -99,7 +92,7 @@ export default function Header() {
                   to="/register"
                   className="px-4 py-2 rounded-md bg-yellow-500 hover:bg-yellow-400 text-slate-800 font-semibold transition"
                 >
-                  Register
+                  Registrati
                 </Link>
               </li>
             </>
