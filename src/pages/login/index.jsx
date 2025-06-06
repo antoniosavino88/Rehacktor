@@ -123,7 +123,7 @@ export default function LoginPage() {
         <div>
           <button
             type="submit"
-            className="w-full bg-yellow-500 hover:bg-yellow-400 text-slate-800 font-semibold py-2 px-4 rounded-xl transition cursor-pointer"
+            className="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-800 font-semibold py-2 px-4 rounded-xl transition cursor-pointer"
           >
             Accedi
           </button>

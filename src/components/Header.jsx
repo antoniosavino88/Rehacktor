@@ -53,6 +53,14 @@ export default function Header() {
               <ul className="absolute right-0 mt-2 w-40 bg-slate-800 rounded-md shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
                 <li>
                   <a
+                    href="/account"
+                    className="block px-4 py-2 hover:bg-slate-700 transition"
+                  >
+                    Account
+                  </a>
+                </li>
+                <li>
+                  <a
                     href="#"
                     className="block px-4 py-2 hover:bg-slate-700 transition"
                   >
@@ -62,7 +70,7 @@ export default function Header() {
                 <li>
                   <button
                     onClick={signOut}
-                    className="block w-full text-left px-4 py-2 hover:bg-slate-700 transition cursor-pointer"
+                    className="block w-full text-left text-red-500 font-semibold px-4 py-2 hover:bg-slate-700 transition cursor-pointer"
                   >
                     Logout
                   </button>
@@ -137,6 +145,14 @@ export default function Header() {
                   </span>
                 </li>
                 <li>
+                  <a
+                    href="/account"
+                    className="block text-white hover:text-blue-400"
+                  >
+                    Account
+                  </a>
+                </li>
+                <li>
                   <a href="#" className="block text-white hover:text-blue-400">
                     Settings
                   </a>
@@ -144,7 +160,7 @@ export default function Header() {
                 <li>
                   <button
                     onClick={signOut}
-                    className="block w-full text-left text-white hover:text-blue-400"
+                    className="block w-full text-end font-semibold text-red-500 hover:text-blue-400"
                   >
                     Logout
                   </button>
