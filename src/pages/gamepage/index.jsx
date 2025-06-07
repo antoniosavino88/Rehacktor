@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import useFetchSolution from "../../hooks/useFetch";
+import ToggleFavorite from "../../components/ToggleFavorite";
 
 export default function GamePage() {
   const { id } = useParams();
@@ -24,11 +25,14 @@ export default function GamePage() {
         <div className="flex flex-col lg:flex-row items-start gap-8 bg-slate-900 text-white p-8 rounded-lg shadow-xl">
           {/* Info Gioco */}
           <div className="flex-1 space-y-4">
-            <p className="text-sm text-gray-400">📅 {data.released}</p>
+            <p className="text-sm text-gray-400 italic">
+              Pubblicazione: {data.released}
+            </p>
             <h1 className="text-3xl font-bold">{data.name}</h1>
             <p className="text-yellow-400 text-sm font-semibold">
               ⭐ Rating: {data.rating}
             </p>
+            <ToggleFavorite data={data} />
             <div>
               <p className="text-lg font-semibold mb-1">About:</p>
               <p className="text-gray-300 leading-relaxed">

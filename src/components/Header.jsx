@@ -61,10 +61,10 @@ export default function Header() {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/profile"
                     className="block px-4 py-2 hover:bg-slate-700 transition"
                   >
-                    Settings
+                    Profilo
                   </a>
                 </li>
                 <li>
@@ -153,8 +153,11 @@ export default function Header() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="block text-white hover:text-blue-400">
-                    Settings
+                  <a
+                    href="/profile"
+                    className="block text-white hover:text-blue-400"
+                  >
+                    Profilo
                   </a>
                 </li>
                 <li>

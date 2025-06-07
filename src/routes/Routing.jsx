@@ -8,6 +8,7 @@ import SearchPage from "../pages/searchpage/index";
 import RegisterPage from "../pages/register/index";
 import LoginPage from "../pages/login/index";
 import AccountPage from "../pages/account/index";
+import ProfilePage from "../pages/profile/index";
 
 export function Routing() {
   return (
@@ -21,6 +22,7 @@ export function Routing() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/account" element={<AccountPage />} />
+          <Route path="/profile" element={<ProfilePage />}></Route>
           {/* catchallroutes */}
           <Route path="*" element={<ErrorPage />} />
         </Route>
