@@ -2,6 +2,7 @@ import { useContext } from "react";
 import SessionContext from "../../context/SessionContext";
 import FavoritesContext from "../../context/FavoritesContext";
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function ProfilePage() {
   const { session } = useContext(SessionContext);
@@ -18,7 +19,7 @@ export default function ProfilePage() {
       </h2>
 
       <div className="bg-slate-800 rounded-xl shadow-md overflow-hidden">
-        <h3 className="text-xl text-white font-semibold px-6 py-4 border-b border-slate-700">
+        <h3 className="text-xl text-white font-semibold px-6 py-4 border-b border-slate-700 text-center">
           I tuoi giochi preferiti
         </h3>
 
@@ -30,7 +31,7 @@ export default function ProfilePage() {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-slate-900 text-left text-white text-sm">
+            <table className="min-w-full bg-slate-900 text-sm text-white overflow-hidden">
               <tbody>
                 {favorites.map((game) => (
                   <tr
@@ -41,13 +42,23 @@ export default function ProfilePage() {
                       <img
                         src={game.game_image}
                         alt={game.game_name}
-                        className="w-16 h-16 rounded-md object-cover"
+                        className="w-16 h-16 rounded-md object-cover shadow-md"
                       />
                     </td>
-                    <td className="px-6 py-4 font-medium">{game.game_name}</td>
+                    <td className="px-6 py-4 font-medium whitespace-nowrap">
+                      {game.game_name}
+                    </td>
+                    <td className="px-6 py-4">
+                      <Link
+                        to={`/games/${game.game_slug}/${game.game_id}`}
+                        className="inline-block bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-semibold px-4 py-2 rounded-full transition duration-300 shadow-sm"
+                      >
+                        Vai al gioco
+                      </Link>
+                    </td>
                     <td className="px-6 py-4 text-right">
                       <button
-                        className="text-red-500 hover:text-red-400 transition"
+                        className="text-red-500 hover:text-red-400 transition cursor-pointer"
                         onClick={() => removeFavorite(game.game_id)}
                         title="Rimuovi dai preferiti"
                       >
