@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import useFetchSolution from "../../hooks/useFetch";
 import ToggleFavorite from "../../components/ToggleFavorite";
+import Chatbox from "../../components/Chatbox";
 
 export default function GamePage() {
   const { id } = useParams();
@@ -48,6 +49,10 @@ export default function GamePage() {
               alt={data.name}
               className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
             />
+          </div>
+
+          <div className="style-chatbox">
+            <Chatbox data={data && data} />
           </div>
         </div>
       )}
