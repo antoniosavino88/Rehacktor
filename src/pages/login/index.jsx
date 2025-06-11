@@ -66,12 +66,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 bg-slate-800 p-6 rounded-2xl shadow-lg text-white">
+    <div className="max-w-md mx-auto mt-10 bg-primary p-6 rounded-2xl shadow-lg text-text">
       <form onSubmit={onSubmit} noValidate className="space-y-6">
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-white mb-1"
+            className="block text-sm font-medium text-text mb-1"
           >
             Email
           </label>
@@ -84,11 +84,11 @@ export default function LoginPage() {
             onBlur={onBlur("email")}
             aria-invalid={isInvalid("email")}
             required
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-700 focus:border-yellow-500 focus:ring-yellow-500 focus:outline-none rounded-md"
+            className="w-full px-4 py-2 bg-tertiary border border-tertiary focus:border-accent focus:ring-accent focus:outline-none rounded-md"
             placeholder="you@example.com"
           />
           {formErrors.email && (
-            <small className="text-yellow-500 mt-1 block text-sm">
+            <small className="text-accent mt-1 block text-sm">
               {formErrors.email}
             </small>
           )}
@@ -97,7 +97,7 @@ export default function LoginPage() {
         <div>
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-white mb-1"
+            className="block text-sm font-medium text-text mb-1"
           >
             Password
           </label>
@@ -110,11 +110,11 @@ export default function LoginPage() {
             onBlur={onBlur("password")}
             aria-invalid={isInvalid("password")}
             required
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-700 focus:border-yellow-500 focus:ring-yellow-500 focus:outline-none rounded-md"
+            className="w-full px-4 py-2 bg-tertiary border border-tertiary focus:border-accent focus:ring-accent focus:outline-none rounded-md"
             placeholder="••••••••"
           />
           {formErrors.password && (
-            <small className="text-yellow-500 mt-1 block text-sm">
+            <small className="text-accent mt-1 block text-sm">
               {formErrors.password}
             </small>
           )}
@@ -123,7 +123,7 @@ export default function LoginPage() {
         <div>
           <button
             type="submit"
-            className="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-800 font-semibold py-2 px-4 rounded-xl transition cursor-pointer"
+            className="w-full bg-accent hover:bg-accent-hover text-primary font-semibold py-2 px-4 rounded-xl transition cursor-pointer"
           >
             Accedi
           </button>

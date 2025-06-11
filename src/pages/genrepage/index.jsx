@@ -11,7 +11,7 @@ export default function GenrePage() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-white my-10 capitalize">
+      <h1 className="text-3xl font-bold text-text my-10 capitalize">
         {genre} games
       </h1>
 
@@ -22,9 +22,7 @@ export default function GenrePage() {
       )}
 
       <div className="grid-games-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {error && (
-          <article className="bg-red-500 text-white p-3">{error}</article>
-        )}
+        {error && <article className="bg-error text-text p-3">{error}</article>}
         {data &&
           data.results.map((game) => <CardGame key={game.id} game={game} />)}
       </div>

@@ -9,7 +9,7 @@ export default function GenresDropdown() {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-6 border-b pb-2 border-slate-600">
+      <h2 className="text-2xl font-semibold mb-6 border-b pb-2 border-tertiary">
         Generi
       </h2>
 
@@ -20,7 +20,7 @@ export default function GenresDropdown() {
       )}
 
       {error && (
-        <div className="bg-red-500 text-white text-sm p-2 mb-4">{error}</div>
+        <div className="bg-error text-text text-sm p-2 mb-4">{error}</div>
       )}
 
       <ul className="space-y-2">
@@ -28,7 +28,7 @@ export default function GenresDropdown() {
           data.results.map((genre) => (
             <li
               key={genre.id}
-              className="cursor-pointer hover:bg-slate-700 px-3 my-1.5 transition duration-200"
+              className="cursor-pointer hover:bg-tertiary px-3 my-1.5 transition duration-200"
             >
               <Link to={`/games/${genre.slug}`}>{genre.name}</Link>
             </li>

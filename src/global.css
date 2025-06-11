@@ -15,3 +15,21 @@ input:-webkit-autofill {
   -webkit-text-fill-color: #fff; /* testo bianco */
   transition: background-color 5000s ease-in-out 0s;
 }
+
+@theme {
+  --color-primary: #1e293b; /* slate-800 */
+  --color-secondary: #0f172a; /* slate-900 */
+  --color-tertiary: #334155; /* slate-700 */
+  --color-quaternary: #475569; /* slate-600 */
+  --color-text: #ffffff; /* white */
+
+  /* Primary button */
+  --color-accent: #facc15; /* yellow-500 */
+  --color-accent-hover: #eab308; /* yellow-600 */
+  --color-focus: #60a5fa; /* blue-400  */
+
+  /* States */
+  --color-error: #ef4444; /* red-500 */
+  --color-error-hover: #f87171; /* red-400 */
+  --color-success: #34d399; /* emerald-400 */
+}

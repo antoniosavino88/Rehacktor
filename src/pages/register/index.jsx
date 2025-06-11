@@ -71,7 +71,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-slate-800 text-white p-8 rounded-lg shadow-lg">
+    <div className="max-w-md mx-auto bg-primary text-text p-8 rounded-lg shadow-lg">
       <form onSubmit={onSubmit} noValidate className="space-y-6">
         <div>
           <label htmlFor="email" className="block mb-1 text-sm font-medium">
@@ -86,10 +86,10 @@ export default function RegisterPage() {
             onBlur={onBlur("email")}
             aria-invalid={isInvalid("email")}
             required
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-700 focus:border-yellow-500 focus:ring-yellow-500 focus:outline-none rounded-md"
+            className="w-full px-4 py-2 bg-tertiary border border-tertiary focus:border-accent focus:ring-accent focus:outline-none rounded-md"
           />
           {formErrors.email && (
-            <small className="text-red-400">{formErrors.email}</small>
+            <small className="text-error-hover">{formErrors.email}</small>
           )}
         </div>
 
@@ -106,10 +106,10 @@ export default function RegisterPage() {
             onBlur={onBlur("firstName")}
             aria-invalid={isInvalid("firstName")}
             required
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-700 focus:border-yellow-500 focus:ring-yellow-500 focus:outline-none rounded-md"
+            className="w-full px-4 py-2 bg-tertiary border border-tertiary focus:border-accent focus:ring-accent focus:outline-none rounded-md"
           />
           {formErrors.firstName && (
-            <small className="text-red-400">{formErrors.firstName}</small>
+            <small className="text-error-hover">{formErrors.firstName}</small>
           )}
         </div>
 
@@ -126,10 +126,10 @@ export default function RegisterPage() {
             onBlur={onBlur("lastName")}
             aria-invalid={isInvalid("lastName")}
             required
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-700 focus:border-yellow-500 focus:ring-yellow-500 focus:outline-none rounded-md"
+            className="w-full px-4 py-2 bg-tertiary border border-tertiary focus:border-accent focus:ring-accent focus:outline-none rounded-md"
           />
           {formErrors.lastName && (
-            <small className="text-red-400">{formErrors.lastName}</small>
+            <small className="text-error-hover">{formErrors.lastName}</small>
           )}
         </div>
 
@@ -146,10 +146,10 @@ export default function RegisterPage() {
             onBlur={onBlur("username")}
             aria-invalid={isInvalid("username")}
             required
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-700 focus:border-yellow-500 focus:ring-yellow-500 focus:outline-none rounded-md"
+            className="w-full px-4 py-2 bg-tertiary border border-tertiary focus:border-accent focus:ring-accent focus:outline-none rounded-md"
           />
           {formErrors.username && (
-            <small className="text-red-400">{formErrors.username}</small>
+            <small className="text-error-hover">{formErrors.username}</small>
           )}
         </div>
 
@@ -166,20 +166,20 @@ export default function RegisterPage() {
             onBlur={onBlur("password")}
             aria-invalid={isInvalid("password")}
             required
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-700 focus:border-yellow-500 focus:ring-yellow-500 focus:outline-none rounded-md"
+            className="w-full px-4 py-2 bg-tertiary border border-tertiary focus:border-accent focus:ring-accent focus:outline-none rounded-md"
           />
           <p className="text-sm text-gray-400 mt-1 italic text-muted">
             La password deve contere almeno una maiuscola, una minuscola e un
             numero
           </p>
           {formErrors.password && (
-            <small className="text-red-400">{formErrors.password}</small>
+            <small className="text-error-hover">{formErrors.password}</small>
           )}
         </div>
 
         <button
           type="submit"
-          className="w-full bg-yellow-500 hover:bg-yellow-600 text-slate-800 font-semibold py-2 px-4 rounded-md transition duration-300 cursor-pointer"
+          className="w-full bg-accent hover:bg-accent-hover text-primary font-semibold py-2 px-4 rounded-md transition duration-300 cursor-pointer"
         >
           Registrati
         </button>

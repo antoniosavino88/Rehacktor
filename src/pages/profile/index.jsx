@@ -10,16 +10,16 @@ export default function ProfilePage() {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <h2 className="text-2xl font-semibold text-white mb-6 py-10">
+      <h2 className="text-2xl font-semibold text-text mb-6 py-10">
         Ciao{" "}
-        <span className="text-yellow-500">
+        <span className="text-accent">
           {session?.user.user_metadata.first_name}
         </span>
         , benvenuto nel tuo profilo
       </h2>
 
-      <div className="bg-slate-800 rounded-xl shadow-md overflow-hidden">
-        <h3 className="text-xl text-white font-semibold px-6 py-4 border-b border-slate-700 text-center">
+      <div className="bg-primary rounded-xl shadow-md overflow-hidden">
+        <h3 className="text-xl text-text font-semibold px-6 py-4 border-b border-tertiary text-center">
           I tuoi giochi preferiti
         </h3>
 
@@ -31,12 +31,12 @@ export default function ProfilePage() {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-slate-900 text-sm text-white overflow-hidden">
+            <table className="min-w-full bg-secondary text-sm text-text overflow-hidden">
               <tbody>
                 {favorites.map((game) => (
                   <tr
                     key={game.id}
-                    className="border-b border-slate-700 hover:bg-slate-800 transition"
+                    className="border-b border-tertiary hover:bg-primary transition"
                   >
                     <td className="px-6 py-4">
                       <img
@@ -45,20 +45,20 @@ export default function ProfilePage() {
                         className="w-16 h-16 rounded-md object-cover shadow-md"
                       />
                     </td>
-                    <td className="px-6 py-4 font-medium whitespace-nowrap">
+                    <td className="px-6 py-4 font-medium textspace-nowrap">
                       {game.game_name}
                     </td>
                     <td className="px-6 py-4">
                       <Link
                         to={`/games/${game.game_slug}/${game.game_id}`}
-                        className="inline-block bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-semibold px-4 py-2 rounded-full transition duration-300 shadow-sm"
+                        className="inline-block bg-accent hover:bg-accent-hover text-secondary font-semibold px-4 py-2 rounded-full transition duration-300 shadow-sm"
                       >
                         Vai al gioco
                       </Link>
                     </td>
                     <td className="px-6 py-4 text-right">
                       <button
-                        className="text-red-500 hover:text-red-400 transition cursor-pointer"
+                        className="text-error hover:text-error-hover transition cursor-pointer"
                         onClick={() => removeFavorite(game.game_id)}
                         title="Rimuovi dai preferiti"
                       >

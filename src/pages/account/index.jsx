@@ -96,8 +96,8 @@ export default function AccountPage() {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-5 bg-slate-800 text-white p-6 rounded-2xl shadow-lg space-y-6">
-      <h2 className="text-2xl font-bold mb-4 text-yellow-400">
+    <div className="max-w-xl mx-auto mt-5 bg-primary text-text p-6 rounded-2xl shadow-lg space-y-6">
+      <h2 className="text-2xl font-bold mb-4 text-accent">
         Impostazioni profilo
       </h2>
 
@@ -132,7 +132,7 @@ export default function AccountPage() {
           <button
             type="button"
             onClick={() => document.querySelector('input[type="file"]').click()}
-            className="px-4 py-2 text-sm font-medium text-slate-800 bg-yellow-500 hover:bg-yellow-600 rounded-lg transition cursor-pointer"
+            className="px-4 py-2 text-sm font-medium text-primary bg-accent hover:bg-accent-hover rounded-lg transition cursor-pointer"
           >
             Cambia Avatar
           </button>
@@ -146,11 +146,11 @@ export default function AccountPage() {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-slate-300 mb-1"
+            className="block text-sm font-medium text-text mb-1"
           >
             Email
           </label>
-          <p className="bg-slate-700 text-slate-100 px-4 py-2 rounded-md">
+          <p className="bg-tertiary text-text px-4 py-2 rounded-md">
             {session?.user.email}
           </p>
         </div>
@@ -159,7 +159,7 @@ export default function AccountPage() {
         <div>
           <label
             htmlFor="username"
-            className="block text-sm font-medium text-slate-300 mb-1"
+            className="block text-sm font-medium text-text mb-1"
           >
             Username
           </label>
@@ -169,7 +169,7 @@ export default function AccountPage() {
             required
             value={username || ""}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 bg-tertiary border border-quaternary rounded-md focus:outline-none focus:ring-2 focus:ring-focus"
           />
         </div>
 
@@ -177,7 +177,7 @@ export default function AccountPage() {
         <div>
           <label
             htmlFor="first_name"
-            className="block text-sm font-medium text-slate-300 mb-1"
+            className="block text-sm font-medium text-text mb-1"
           >
             First Name
           </label>
@@ -186,7 +186,7 @@ export default function AccountPage() {
             type="text"
             value={firstName || ""}
             onChange={(e) => setFirstName(e.target.value)}
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 bg-tertiary border border-quaternary rounded-md focus:outline-none focus:ring-2 focus:ring-focus"
           />
         </div>
 
@@ -194,7 +194,7 @@ export default function AccountPage() {
         <div>
           <label
             htmlFor="last_name"
-            className="block text-sm font-medium text-slate-300 mb-1"
+            className="block text-sm font-medium text-text mb-1"
           >
             Last Name
           </label>
@@ -203,7 +203,7 @@ export default function AccountPage() {
             type="text"
             value={lastName || ""}
             onChange={(e) => setLastName(e.target.value)}
-            className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 bg-tertiary border border-quaternary rounded-md focus:outline-none focus:ring-2 focus:ring-focus"
           />
         </div>
 
@@ -212,7 +212,7 @@ export default function AccountPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-semibold rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            className="w-full px-4 py-2 bg-accent hover:bg-accent-hover text-secondary font-semibold rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           >
             {loading ? "Caricamento ..." : "Aggiorna profilo"}
           </button>

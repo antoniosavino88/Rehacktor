@@ -78,7 +78,7 @@ export default function RealtimeChat({ data }) {
       {messages &&
         messages.map((message) => (
           <article key={message.id}>
-            <p className=" text-yellow-400">{message.profile_username}</p>
+            <p className=" text-accent">{message.profile_username}</p>
             <small>{message.content}</small>
             <p className="text-xs text-gray-400 italic">
               {dayjs().to(dayjs(message.created_at))}

@@ -16,7 +16,7 @@ export default function Header() {
   };
 
   return (
-    <nav className="bg-slate-800 text-white px-6 py-4 shadow-md fixed top-0 left-0 right-0 z-10">
+    <nav className="bg-primary text-text px-6 py-4 shadow-md fixed top-0 left-0 right-0 z-10">
       <div className="mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="text-2xl font-bold tracking-wide">Rehacktor</div>
@@ -24,20 +24,20 @@ export default function Header() {
         {/* Desktop Navigation */}
         <ul className="hidden md:flex items-center space-x-6 ml-auto">
           <li>
-            <Link to="/" className="hover:text-blue-400 transition">
+            <Link to="/" className="hover:text-accent transition">
               Home
             </Link>
           </li>
           <li>
-            <a href="#" className="hover:text-blue-400 transition">
+            <a href="#" className="hover:text-accent transition">
               Services
             </a>
           </li>
           {session ? (
             <li className="relative group">
-              <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-slate-800 hover:bg-slate-700 transition font-semibold">
+              <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-primary hover:bg-tertiary transition font-semibold">
                 Ciao{" "}
-                <span className="text-yellow-400">
+                <span className="text-accent">
                   {session.user.user_metadata.first_name}
                 </span>
                 <svg
@@ -50,11 +50,11 @@ export default function Header() {
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <ul className="absolute right-0 mt-2 w-40 bg-slate-800 rounded-md shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
+              <ul className="absolute right-0 mt-2 w-40 bg-primary rounded-md shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
                 <li>
                   <a
                     href="/account"
-                    className="block px-4 py-2 hover:bg-slate-700 transition"
+                    className="block px-4 py-2 hover:bg-tertiary transition"
                   >
                     Account
                   </a>
@@ -62,7 +62,7 @@ export default function Header() {
                 <li>
                   <a
                     href="/profile"
-                    className="block px-4 py-2 hover:bg-slate-700 transition"
+                    className="block px-4 py-2 hover:bg-tertiary transition"
                   >
                     Profilo
                   </a>
@@ -70,7 +70,7 @@ export default function Header() {
                 <li>
                   <button
                     onClick={signOut}
-                    className="block w-full text-left text-red-500 font-semibold px-4 py-2 hover:bg-slate-700 transition cursor-pointer"
+                    className="block w-full text-left text-error font-semibold px-4 py-2 hover:bg-tertiary transition cursor-pointer"
                   >
                     Logout
                   </button>
@@ -82,7 +82,7 @@ export default function Header() {
               <li>
                 <Link
                   to="/login"
-                  className="px-4 py-2 text-yellow-400 hover:text-yellow-300 transition"
+                  className="px-4 py-2 text-accent hover:text-accent-hover transition"
                 >
                   Login
                 </Link>
@@ -90,7 +90,7 @@ export default function Header() {
               <li>
                 <Link
                   to="/register"
-                  className="px-4 py-2 rounded-md bg-yellow-500 hover:bg-yellow-400 text-slate-800 font-semibold transition"
+                  className="px-4 py-2 rounded-md bg-accent hover:bg-accent-hover text-primary font-semibold transition"
                 >
                   Registrati
                 </Link>
@@ -103,7 +103,7 @@ export default function Header() {
         <div className="md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-white focus:outline-none"
+            className="text-text focus:outline-none"
           >
             <svg
               className="w-6 h-6"
@@ -127,27 +127,27 @@ export default function Header() {
         <div className="md:hidden px-6 pt-4 pb-6 text-end">
           <ul className="space-y-4">
             <li>
-              <Link to="/" className="block text-white hover:text-blue-400">
+              <Link to="/" className="block text-text hover:text-accent">
                 Home
               </Link>
             </li>
             <li>
-              <a href="#" className="block text-white hover:text-blue-400">
+              <a href="#" className="block text-text hover:text-accent">
                 Services
               </a>
             </li>
             {session ? (
               <>
-                <li className="text-white font-semibold">
+                <li className="text-text font-semibold">
                   Ciao{" "}
-                  <span className="text-yellow-400">
+                  <span className="text-accent">
                     {session.user.user_metadata.first_name}
                   </span>
                 </li>
                 <li>
                   <a
                     href="/account"
-                    className="block text-white hover:text-blue-400"
+                    className="block text-text hover:text-accent"
                   >
                     Account
                   </a>
@@ -155,7 +155,7 @@ export default function Header() {
                 <li>
                   <a
                     href="/profile"
-                    className="block text-white hover:text-blue-400"
+                    className="block text-text hover:text-accent"
                   >
                     Profilo
                   </a>
@@ -163,7 +163,7 @@ export default function Header() {
                 <li>
                   <button
                     onClick={signOut}
-                    className="block w-full text-end font-semibold text-red-500 hover:text-blue-400"
+                    className="block w-full text-end font-semibold text-error hover:text-accent"
                   >
                     Logout
                   </button>
@@ -174,7 +174,7 @@ export default function Header() {
                 <li>
                   <Link
                     to="/login"
-                    className="block text-yellow-400 hover:text-yellow-300"
+                    className="block text-accent hover:text-accent-hover"
                   >
                     Login
                   </Link>
@@ -182,7 +182,7 @@ export default function Header() {
                 <li>
                   <Link
                     to="/register"
-                    className="block bg-yellow-500 hover:bg-yellow-400 text-slate-800 font-semibold px-4 py-2 rounded-md"
+                    className="block bg-accent hover:bg-accent-hover text-primary font-semibold px-4 py-2 rounded-md"
                   >
                     Registrati
                   </Link>

@@ -13,7 +13,7 @@ export default function Layout() {
           <Sidebar />
         </section>
 
-        <section className="style-main-content min-h-screen ml-64 flex-1 p-6 bg-gradient-to-b from-slate-900 to-slate-800 mt-15">
+        <section className="style-main-content min-h-screen ml-64 flex-1 p-6 bg-gradient-to-b from-secondary to-primary mt-15">
           <Outlet />
         </section>
       </main>
