@@ -18,7 +18,7 @@ export default function Layout() {
 
         {/* Contenuto principale */}
         <section
-          className={`style-main-content min-h-screen flex-1 p-6 transition-all duration-300 ${
+          className={`style-main-content min-h-screen flex-1 transition-all duration-300 ${
             isSidebarOpen ? "ml-64" : "ml-0"
           }`}
         >

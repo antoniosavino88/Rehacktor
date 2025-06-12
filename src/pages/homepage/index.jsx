@@ -8,7 +8,7 @@ export default function HomePage() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-text my-10">
+      <h1 className="text-3xl font-bold text-text my-10 ms-10">
         Nuovi e di tendenza
       </h1>
 

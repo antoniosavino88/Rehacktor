@@ -59,7 +59,7 @@ export default function ListingPage() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-text my-10 capitalize">
+      <h1 className="text-3xl font-bold text-text my-10 ms-10 capitalize">
         {categoryName} games
       </h1>
 

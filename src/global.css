@@ -12,6 +12,9 @@
   --color-accent-hover: #eab308; /* yellow-600 */
   --color-focus: #60a5fa; /* blue-400  */
 
+  /* Gray */
+  --color-smooth: #d1d5db; /* gray-300*/
+
   /* States */
   --color-error: #ef4444; /* red-500 */
   --color-error-hover: #f87171; /* red-400 */
