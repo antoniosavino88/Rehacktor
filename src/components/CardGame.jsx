@@ -26,14 +26,14 @@ export default function CardGame({ game }) {
               <Link
                 key={g.id}
                 to={`/genres/${g.slug}`}
-                className="text-xs font-medium bg-slate-700 text-white px-2 py-1 rounded hover:bg-slate-600 transition"
+                className="text-xs font-medium bg-tertiary text-text px-2 py-1 rounded hover:bg-quaternary transition"
               >
                 {g.name}
               </Link>
             ))}
           </div>
 
-          <p className="text-sm mb-4">Rilasciato: {game.released}</p>
+          <p className="text-sm mb-4 italic">Rilasciato: {game.released}</p>
 
           <div className="flex justify-end">
             <Link
