@@ -1,45 +1,56 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 export default function useFetchSolution(initialUrl) {
+  const [url, setUrl] = useState(initialUrl);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [url, updateUrl] = useState(initialUrl);
 
-  const load = useCallback(async () => {
-    setData(null);
-    if (!url) {
-      setError("Error URL!");
-      return;
-    } else {
-      setError(null);
-    }
-
-    setLoading(true);
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      const json = await response.json();
-      setData(json);
-    } catch (error) {
-      setError(error.message);
-      setData(null);
-    }
-    setLoading(false);
-  }, [url]);
+  // Aggiorna l’URL quando cambia l’iniziale
+  useEffect(() => {
+    setUrl(initialUrl);
+  }, [initialUrl]);
 
   useEffect(() => {
-    load();
-  }, [load]);
+    if (!url) {
+      setError("URL non valido");
+      setData(null);
+      return;
+    }
+
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await fetch(url, { signal });
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        const json = await response.json();
+        setData(json);
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          setError(err.message);
+          setData(null);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+
+    // Cleanup in caso di navigazioni rapide
+    return () => controller.abort();
+  }, [url]);
 
   return {
-    url,
     loading,
-    error,
     data,
-    load,
-    updateUrl,
+    error,
+    updateUrl: setUrl, // se vuoi comunque usarlo manualmente
   };
 }

@@ -2,18 +2,26 @@ import { Outlet } from "react-router";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
+import { useState } from "react";
 
 export default function Layout() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <div className="style-layout-system">
       <Header />
 
-      <main>
-        <section className="style-sidebar-filters">
-          <Sidebar />
-        </section>
+      {/* Sidebar + Main Content */}
+      <main className="flex relative bg-gradient-to-b from-secondary to-primary pt-15">
+        {/* Sidebar */}
+        <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 
-        <section className="style-main-content min-h-screen ml-64 flex-1 p-6 bg-gradient-to-b from-secondary to-primary mt-15">
+        {/* Contenuto principale */}
+        <section
+          className={`style-main-content min-h-screen flex-1 p-6 transition-all duration-300 ${
+            isSidebarOpen ? "ml-64" : "ml-0"
+          }`}
+        >
           <Outlet />
         </section>
       </main>

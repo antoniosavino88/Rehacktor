@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { Search } from "lucide-react";
 
 export default function Searchbar() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function Searchbar() {
   };
 
   return (
-    <form onSubmit={handleSearch} className="max-w-md mx-auto my-6">
+    <form onSubmit={handleSearch} className="w-full max-w-3xl mx-auto">
       <fieldset
         role="group"
         className="flex rounded-full overflow-hidden shadow-md bg-primary border border-tertiary focus-within:ring-2 focus-within:ring-accent"
@@ -31,11 +32,12 @@ export default function Searchbar() {
           aria-invalid={ariaInvalid}
           className="w-full px-4 py-2 bg-primary text-text placeholder-gray-400 focus:outline-none"
         />
-        <input
+        <button
           type="submit"
-          value="Go"
-          className="px-5 py-2 bg-accent text-primary font-semibold hover:bg-accent-hover transition-colors duration-200 cursor-pointer rounded-r-full"
-        />
+          className="px-4 py-2 bg-accent text-primary font-semibold hover:bg-accent-hover transition-colors duration-200 rounded-r-full flex items-center justify-center cursor-pointer"
+        >
+          <Search className="w-5 h-5" />
+        </button>
       </fieldset>
     </form>
   );

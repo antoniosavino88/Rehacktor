@@ -1,21 +1,5 @@
 @import "tailwindcss";
 
-/* Nasconde la scrollbar ma consente lo scroll */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE e Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #334155 inset; /* slate-700 */
-  -webkit-text-fill-color: #fff; /* testo bianco */
-  transition: background-color 5000s ease-in-out 0s;
-}
-
 @theme {
   --color-primary: #1e293b; /* slate-800 */
   --color-secondary: #0f172a; /* slate-900 */
@@ -32,4 +16,20 @@ input:-webkit-autofill {
   --color-error: #ef4444; /* red-500 */
   --color-error-hover: #f87171; /* red-400 */
   --color-success: #34d399; /* emerald-400 */
+}
+
+/* Nasconde la scrollbar ma consente lo scroll */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE e Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #334155 inset; /* slate-700 */
+  -webkit-text-fill-color: #fff; /* testo bianco */
+  transition: background-color 5000s ease-in-out 0s;
 }
