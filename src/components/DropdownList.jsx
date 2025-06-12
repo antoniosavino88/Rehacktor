@@ -17,7 +17,7 @@ export default function DropdownList({ type }) {
     genres:
       "https://api.rawg.io/api/genres?key=2a8cb120892248bd952e976161641d53",
     platforms:
-      "https://api.rawg.io/api/platforms/lists/parents?key=2a8cb120892248bd952e976161641d53",
+      "https://api.rawg.io/api/platforms?key=2a8cb120892248bd952e976161641d53",
     developers:
       "https://api.rawg.io/api/developers?key=2a8cb120892248bd952e976161641d53",
     publishers:
@@ -58,16 +58,20 @@ export default function DropdownList({ type }) {
         }`}
       >
         {data &&
-          data.results.map((item) => (
-            <li
-              key={item.id}
-              className="cursor-pointer hover:bg-tertiary px-3 py-1 rounded transition"
-            >
-              <Link to={`/${type}/${type === "genres" ? item.slug : item.id}`}>
-                {item.name}
-              </Link>
-            </li>
-          ))}
+          data.results
+            .filter((item) => item.games_count > 0)
+            .map((item) => (
+              <li
+                key={item.id}
+                className="cursor-pointer hover:bg-tertiary px-3 py-1 rounded transition"
+              >
+                <Link
+                  to={`/${type}/${type === "genres" ? item.slug : item.id}`}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
       </ul>
     </div>
   );
