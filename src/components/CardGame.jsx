@@ -1,8 +1,12 @@
 import LazyLoadGameImage from "../components/LazyLoadGameImage";
 import { Link } from "react-router";
+import ToggleFavorite from "./ToggleFavorite";
+import { useContext } from "react";
+import SessionContext from "../context/SessionContext";
 
 export default function CardGame({ game }) {
   const genres = game.genres.map((genre) => genre.name).join(", ");
+  const { session } = useContext(SessionContext);
 
   return (
     <div className="flex justify-center my-3">
@@ -13,6 +17,13 @@ export default function CardGame({ game }) {
         <LazyLoadGameImage image={game.background_image} />
 
         <div className="p-5">
+          {session ? (
+            <div className="flex justify-end">
+              <ToggleFavorite data={game} />
+            </div>
+          ) : (
+            ""
+          )}
           <h2 className="text-xl font-bold mb-1">{game.name}</h2>
           <p className="text-sm text-gray-400 mb-2 italic">{genres}</p>
           <p className="text-sm mb-4">Rilasciato: {game.released}</p>

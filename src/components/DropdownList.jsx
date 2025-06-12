@@ -33,7 +33,7 @@ export default function DropdownList({ type }) {
       {/* Header Dropdown */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center justify-between w-full text-left text-2xl font-semibold mb-4 border-b pb-2 border-tertiary hover:text-accent transition cursor-pointer"
+        className="flex items-center justify-between w-full text-left text-xl font-semibold mb-4 border-b pb-2 border-tertiary hover:text-accent transition cursor-pointer"
       >
         {titles[type] ?? "Sezione"}
         {open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}

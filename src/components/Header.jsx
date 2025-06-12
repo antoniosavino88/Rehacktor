@@ -90,7 +90,7 @@ export default function Header() {
                 <li>
                   <button
                     onClick={signOut}
-                    className="block w-full text-left text-error font-semibold px-4 py-2 hover:bg-tertiary transition"
+                    className="block w-full text-left text-error font-semibold px-4 py-2 hover:bg-tertiary transition cursor-pointer"
                   >
                     Logout
                   </button>
