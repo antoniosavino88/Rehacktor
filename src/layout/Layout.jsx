@@ -3,12 +3,14 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
 import { useState } from "react";
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <div className="style-layout-system">
+      <ScrollToTop />
       <Header />
 
       {/* Sidebar + Main Content */}
