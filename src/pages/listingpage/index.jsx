@@ -1,13 +1,16 @@
 import PacmanLoader from "react-spinners/PacmanLoader";
-import { useParams, useLocation } from "react-router";
+import { useParams, useLocation, useSearchParams } from "react-router";
 import CardGame from "../../components/CardGame";
 import useFetchSolution from "../../hooks/useFetch";
+import Pagination from "../../components/Pagination";
 
 export default function ListingPage() {
   const params = useParams();
   const location = useLocation();
-  const type = location.pathname.split("/")[1]; // es: genres, platforms...
+  const type = location.pathname.split("/")[1];
   const value = params.genre || params.id;
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = parseInt(searchParams.get("page")) || 1;
 
   // Endpoint per giochi (listing)
   const query = (() => {
@@ -28,7 +31,7 @@ export default function ListingPage() {
     }
   })();
 
-  const gamesUrl = `https://api.rawg.io/api/games?key=2a8cb120892248bd952e976161641d53&${query}&page=1`;
+  const gamesUrl = `https://api.rawg.io/api/games?key=2a8cb120892248bd952e976161641d53&${query}&page=${page}`;
   const { data, loading, error } = useFetchSolution(gamesUrl);
 
   // Endpoint per il nome della categoria
@@ -74,6 +77,11 @@ export default function ListingPage() {
         {data &&
           data.results.map((game) => <CardGame key={game.id} game={game} />)}
       </div>
+      <Pagination
+        currentPage={page}
+        hasNext={!!data?.next}
+        onPageChange={(newPage) => setSearchParams({ page: newPage })}
+      />
     </>
   );
 }
