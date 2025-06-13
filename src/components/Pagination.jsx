@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Pagination({ currentPage, hasNext, onPageChange }) {
   const scrollTop = () => {
