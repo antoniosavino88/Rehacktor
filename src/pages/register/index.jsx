@@ -19,6 +19,8 @@ export default function RegisterPage() {
     password: "",
   });
   const navigate = useNavigate();
+  const [successMessage, setSuccessMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -43,7 +45,13 @@ export default function RegisterPage() {
       if (error) {
         alert("Signing up error 👎🏻!");
       } else {
-        alert("Signed up 👍🏻!");
+        successMessage && (
+          <AlertBanner
+            type="success"
+            message={successMessage}
+            onClose={() => setSuccessMessage("")}
+          />
+        );
         await new Promise((resolve) => setTimeout(resolve, 1000));
         navigate("/");
       }
@@ -71,7 +79,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-primary text-text p-8 rounded-lg shadow-lg">
+    <div className="max-w-md mx-auto bg-primary text-text p-8 rounded-lg shadow-lg mt-10">
       <form onSubmit={onSubmit} noValidate className="space-y-6">
         <div>
           <label htmlFor="email" className="block mb-1 text-sm font-medium">
