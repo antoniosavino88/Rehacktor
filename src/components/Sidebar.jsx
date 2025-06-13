@@ -6,7 +6,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
     <>
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-64 bg-primary text-text p-10 shadow-lg overflow-y-auto mt-10 transform transition-transform duration-300 ease-in-out z-2 scrollbar-hide ${
+        className={`fixed top-0 left-0 h-screen w-55 bg-primary text-text p-8 shadow-lg overflow-y-auto mt-10 transform transition-transform duration-300 ease-in-out z-2 scrollbar-hide ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -20,8 +20,8 @@ export default function Sidebar({ isOpen, setIsOpen }) {
       {/* Toggle tab button (outside sidebar but follows it) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed top-16 z-50 h-8 w-10 px-3 flex items-center gap-1 bg-accent text-primary rounded-r-lg shadow-lg transition-all duration-300 cursor-pointer ${
-          isOpen ? "left-64" : "left-0"
+        className={`fixed top-16 z-1 h-8 w-10 px-3 flex items-center gap-1 bg-primary text-accent  rounded-r-lg shadow-lg transition-all duration-300 cursor-pointer hover:bg-tertiary ${
+          isOpen ? "left-55" : "left-0"
         }`}
       >
         {isOpen ? <ChevronsLeft size={20} /> : <ChevronsRight size={20} />}

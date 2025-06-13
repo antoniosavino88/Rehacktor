@@ -35,7 +35,7 @@ export default function GamePage() {
           }}
         >
           {/* Overlay sfumato: nero con leggera tinta accent color */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-[#1b121b]/80 to-[#1b121b] backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-[#1b121b]/80 to-primary backdrop-blur-sm"></div>
 
           {/* Contenuto centrale */}
           <div className="relative z-1 max-w-5xl mx-auto px-6 py-12 flex flex-col gap-12">
@@ -54,7 +54,14 @@ export default function GamePage() {
                 <p className="text-accent text-sm font-semibold">
                   ⭐ Rating: {data.rating}
                 </p>
-                <p className="text-sm">🎯 Metacritic: {data.metacritic}</p>
+                {data.rating_top_critic && (
+                  <p className="text-sm">
+                    🎯 Metacritic: {data.rating_top_critic}
+                  </p>
+                )}
+                {data.metacritic && (
+                  <p className="text-sm">🎯 Metacritic: {data.metacritic}</p>
+                )}
                 <p className="text-sm">
                   🎮 Piattaforme:{" "}
                   {data.platforms.map((p) => p.platform.name).join(", ")}

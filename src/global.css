@@ -1,24 +1,46 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1e293b; /* slate-800 */
-  --color-secondary: #0f172a; /* slate-900 */
-  --color-tertiary: #334155; /* slate-700 */
-  --color-quaternary: #475569; /* slate-600 */
-  --color-text: #ffffff; /* white */
+  /* FONTS */
+  --font-primary: "Source Sans 3", sans-serif;
+  --font-title: "Aldrich", sans-serif;
 
-  /* Primary button */
-  --color-accent: #facc15; /* yellow-500 */
-  --color-accent-hover: #eab308; /* yellow-600 */
-  --color-focus: #60a5fa; /* blue-400  */
+  /* Principali */
+  --color-primary: #1a1a1a;
+  --color-secondary: #121212;
+  --color-tertiary: #2a2a2a;
+  --color-quaternary: #3a3a3a;
 
-  /* Gray */
-  --color-smooth: #d1d5db; /* gray-300*/
+  /* Text */
+  --color-text: #e5e7eb;
+
+  /* Accent  */
+  --color-accent: #d4af0d;
+  --color-accent-hover: #c09408;
+
+  /* Focus */
+  --color-focus: #f59e0b;
+
+  /* Grays */
+  --color-smooth: #6b7280; /* gray-500 */
 
   /* States */
   --color-error: #ef4444; /* red-500 */
   --color-error-hover: #f87171; /* red-400 */
   --color-success: #34d399; /* emerald-400 */
+}
+
+* {
+  font-family: "Source Sans 3", sans-serif;
+}
+
+.font-title {
+  font-family: "Aldrich", sans-serif;
+}
+
+h1 {
+  font-family: "Aldrich", sans-serif;
+  text-shadow: #d4af0d 0px 0px 10px;
 }
 
 /* Nasconde la scrollbar ma consente lo scroll */

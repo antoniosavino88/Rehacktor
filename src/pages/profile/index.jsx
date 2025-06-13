@@ -10,16 +10,16 @@ export default function ProfilePage() {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <h2 className="text-2xl font-semibold text-text mb-6 py-10">
+      <h2 className="text-2xl font-semibold text-text mb-6 py-10 font-title">
         Ciao{" "}
-        <span className="text-accent">
+        <span className="text-accent font-title">
           {session?.user.user_metadata.first_name}
         </span>
         , benvenuto nel tuo profilo
       </h2>
 
       <div className="bg-primary rounded-xl shadow-md overflow-hidden">
-        <h3 className="text-xl text-text font-semibold px-6 py-4 border-b border-tertiary text-center">
+        <h3 className="text-xl text-text font-semibold px-6 py-4 border-b border-tertiary text-center font-title">
           I tuoi giochi preferiti
         </h3>
 
@@ -51,7 +51,7 @@ export default function ProfilePage() {
                     <td className="px-6 py-4">
                       <Link
                         to={`/games/${game.game_slug}/${game.game_id}`}
-                        className="inline-block bg-accent hover:bg-accent-hover text-secondary font-semibold px-4 py-2 rounded-full transition duration-300 shadow-sm"
+                        className="inline-block bg-accent hover:bg-accent-hover text-secondary font-semibold px-4 py-2 rounded-lg transition duration-300 shadow-sm"
                       >
                         Vai al gioco
                       </Link>

@@ -97,8 +97,8 @@ export default function AccountPage() {
 
   return (
     <div className="max-w-xl mx-auto mt-5 bg-primary text-text p-6 rounded-2xl shadow-lg space-y-6">
-      <h2 className="text-2xl font-bold mb-4 text-accent">
-        Impostazioni profilo
+      <h2 className="text-2xl font-bold mb-4 text-accent font-title">
+        Impostazioni account
       </h2>
 
       {successMessage && (

@@ -10,7 +10,7 @@ export default function CardGame({ game }) {
 
   return (
     <div className="flex justify-center my-3">
-      <article className="bg-primary text-text rounded-2xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl max-w-sm w-full">
+      <article className="bg-primary text-text rounded-xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-104 hover:shadow-2xl max-w-sm w-full">
         <LazyLoadGameImage image={game.background_image} />
 
         <div className="p-5">
@@ -38,7 +38,7 @@ export default function CardGame({ game }) {
           <div className="flex justify-end">
             <Link
               to={`/games/${game.slug}/${game.id}`}
-              className="bg-accent hover:bg-accent-hover text-primary font-semibold py-2 px-4 rounded-full transition duration-300"
+              className="bg-accent hover:bg-accent-hover text-primary font-semibold py-1 px-3 rounded-lg transition duration-300"
             >
               Vai al gioco
             </Link>

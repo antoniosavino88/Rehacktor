@@ -37,8 +37,10 @@ export default function Header() {
       <nav className="bg-primary text-text px-4 py-3 shadow-md fixed top-0 left-0 right-0 z-10 w-full">
         <div className=" mx-auto flex items-center justify-between md:justify-normal gap-4 md:gap-8">
           {/* Logo */}
-          <div className="text-xl font-bold tracking-wide flex-shrink-0 hover:text-accent transition">
-            <Link to="/">Rehacktor</Link>
+          <div className="text-xl font-bold tracking-wide flex-shrink-0 text-accent hover:text-accent-hover transition">
+            <Link to="/" className="font-title">
+              Rehacktor
+            </Link>
           </div>
 
           {/* Searchbar */}

@@ -18,7 +18,7 @@ export default function Searchbar() {
   };
 
   return (
-    <form onSubmit={handleSearch} className="w-full max-w-3xl mx-auto">
+    <form onSubmit={handleSearch} className="w-full max-w-5xl mx-auto">
       <fieldset
         role="group"
         className="flex rounded-full overflow-hidden shadow-md bg-primary border border-tertiary focus-within:ring-2 focus-within:ring-accent"

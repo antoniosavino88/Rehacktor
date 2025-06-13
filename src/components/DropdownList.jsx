@@ -33,7 +33,7 @@ export default function DropdownList({ type }) {
       {/* Header Dropdown */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center justify-between w-full text-left text-xl font-semibold mb-4 border-b pb-2 border-tertiary hover:text-accent transition cursor-pointer"
+        className="flex items-center justify-between w-full text-left text-l font-semibold mb-4 border-b pb-2 border-tertiary hover:text-accent transition cursor-pointer font-title"
       >
         {titles[type] ?? "Sezione"}
         {open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -53,8 +53,8 @@ export default function DropdownList({ type }) {
 
       {/* Dropdown content (collapsible) */}
       <ul
-        className={`overflow-hidden transition-all duration-300 ease-in-out space-y-2 ${
-          open ? "max-h-screen" : "max-h-0"
+        className={`overflow-hidden transition-all duration-300 ease-in-out space-y-1 ${
+          open ? "" : "max-h-0"
         }`}
       >
         {data &&
@@ -63,7 +63,7 @@ export default function DropdownList({ type }) {
             .map((item) => (
               <li
                 key={item.id}
-                className="cursor-pointer hover:bg-tertiary px-3 py-1 rounded transition"
+                className="cursor-pointer hover:bg-tertiary px-3 py-1 rounded transition text-sm"
               >
                 <Link
                   to={`/${type}/${type === "genres" ? item.slug : item.id}`}
