@@ -6,6 +6,7 @@ import {
 } from "../../lib/validationForm";
 import supabase from "../../supabase/supabase-client";
 import { useNavigate } from "react-router";
+import AlertBanner from "../../components/AlertBanner"; // <-- Import
 
 export default function RegisterPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -19,8 +20,8 @@ export default function RegisterPage() {
     password: "",
   });
   const navigate = useNavigate();
-  const [successMessage, setSuccessMessage] = useState("");
-  // const [errorMessage, setErrorMessage] = useState("");
+
+  const [alert, setAlert] = useState({ message: "", type: "success" });
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -29,32 +30,32 @@ export default function RegisterPage() {
     if (error) {
       const errors = getErrors(error);
       setFormErrors(errors);
-      console.log(errors);
-    } else {
-      let { error } = await supabase.auth.signUp({
-        email: data.email,
-        password: data.password,
-        options: {
-          data: {
-            first_name: data.firstName,
-            last_name: data.lastName,
-            username: data.username,
-          },
+      return;
+    }
+
+    let { error: signUpError } = await supabase.auth.signUp({
+      email: data.email,
+      password: data.password,
+      options: {
+        data: {
+          first_name: data.firstName,
+          last_name: data.lastName,
+          username: data.username,
         },
+      },
+    });
+
+    if (signUpError) {
+      setAlert({
+        message: "Errore durante la registrazione!",
+        type: "error",
       });
-      if (error) {
-        alert("Signing up error 👎🏻!");
-      } else {
-        successMessage && (
-          <AlertBanner
-            type="success"
-            message={successMessage}
-            onClose={() => setSuccessMessage("")}
-          />
-        );
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        navigate("/");
-      }
+    } else {
+      setAlert({
+        message: "Registrazione completata con successo!",
+        type: "success",
+      });
+      setTimeout(() => navigate("/"), 1500);
     }
   };
 
@@ -79,7 +80,15 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-primary text-text p-8 rounded-lg shadow-lg mt-10">
+    <div className="max-w-md mx-auto bg-primary text-text p-8 rounded-lg shadow-lg mt-10 relative">
+      {alert.message && (
+        <AlertBanner
+          type={alert.type}
+          message={alert.message}
+          onClose={() => setAlert({ message: "", type: "success" })}
+        />
+      )}
+
       <form onSubmit={onSubmit} noValidate className="space-y-6">
         <div>
           <label htmlFor="email" className="block mb-1 text-sm font-medium">
@@ -177,7 +186,7 @@ export default function RegisterPage() {
             className="w-full px-4 py-2 bg-tertiary border border-tertiary focus:border-accent focus:ring-accent focus:outline-none rounded-md"
           />
           <p className="text-sm text-gray-400 mt-1 italic text-muted">
-            La password deve contere almeno una maiuscola, una minuscola e un
+            La password deve contenere almeno una maiuscola, una minuscola e un
             numero
           </p>
           {formErrors.password && (

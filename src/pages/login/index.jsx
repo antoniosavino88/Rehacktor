@@ -7,6 +7,7 @@ import {
   getErrors,
   getFieldError,
 } from "../../lib/validationForm";
+import AlertBanner from "../../components/AlertBanner"; // <-- Import
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -18,6 +19,8 @@ export default function LoginPage() {
     password: "",
   });
 
+  const [alert, setAlert] = useState({ message: "", type: "success" });
+
   const onSubmit = async (event) => {
     event.preventDefault();
     setFormSubmitted(true);
@@ -26,17 +29,21 @@ export default function LoginPage() {
       const errors = getErrors(error);
       setFormErrors(errors);
     } else {
-      console.log(data);
       let { error } = await supabase.auth.signInWithPassword({
         email: data.email,
         password: data.password,
       });
       if (error) {
-        alert("Signing in error 👎!");
+        setAlert({
+          message: "Errore durante l’accesso! Credenziali errate.",
+          type: "error",
+        });
       } else {
-        alert("Signed In 👍!");
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        navigate("/");
+        setAlert({
+          message: "Accesso riuscito!",
+          type: "success",
+        });
+        setTimeout(() => navigate("/"), 1500);
       }
     }
   };
@@ -66,7 +73,15 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 bg-primary p-6 rounded-2xl shadow-lg text-text">
+    <div className="max-w-md mx-auto mt-10 bg-primary p-6 rounded-2xl shadow-lg text-text relative">
+      {alert.message && (
+        <AlertBanner
+          type={alert.type}
+          message={alert.message}
+          onClose={() => setAlert({ message: "", type: "success" })}
+        />
+      )}
+
       <form onSubmit={onSubmit} noValidate className="space-y-6">
         <div>
           <label
