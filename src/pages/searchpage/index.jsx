@@ -17,8 +17,8 @@ export default function SearchPage() {
   };
 
   return (
-    <>
-      <h1 className="text-3xl font-bold text-text my-10 ms-10">
+    <div className="px-60">
+      <h1 className="text-3xl font-bold text-text my-10">
         Risultati per: {game} game
       </h1>
 
@@ -42,6 +42,6 @@ export default function SearchPage() {
           onPageChange={handlePageChange}
         />
       )}
-    </>
+    </div>
   );
 }

@@ -14,12 +14,7 @@ export default function CardGame({ game }) {
         <LazyLoadGameImage image={game.background_image} />
 
         <div className="p-5">
-          {session && (
-            <div className="flex justify-end">
-              <ToggleFavorite data={game} />
-            </div>
-          )}
-          <h2 className="text-xl font-bold mb-2">{game.name}</h2>
+          <h2 className="text-xl font-bold mb-2 truncate">{game.name}</h2>
 
           <div className="flex flex-wrap gap-2 mb-4">
             {genres.map((g) => (
@@ -33,7 +28,14 @@ export default function CardGame({ game }) {
             ))}
           </div>
 
-          <p className="text-sm mb-4 italic">Rilasciato: {game.released}</p>
+          <div className="flex">
+            <p className="text-sm mb-4 italic">Rilasciato: {game.released}</p>
+            {session && (
+              <div className="flex justify-end">
+                <ToggleFavorite data={game} />
+              </div>
+            )}
+          </div>
 
           <div className="flex justify-end">
             <Link

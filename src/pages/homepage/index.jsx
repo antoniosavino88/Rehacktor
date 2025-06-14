@@ -7,8 +7,8 @@ export default function HomePage() {
   const { data, loading, error } = useFetchSolution(initialUrl);
 
   return (
-    <>
-      <h1 className="text-3xl font-bold text-text my-10 ms-10">
+    <div className="px-60">
+      <h1 className="text-3xl font-bold text-text my-10 ">
         Nuovi e di tendenza
       </h1>
 
@@ -23,6 +23,6 @@ export default function HomePage() {
         {data &&
           data.results.map((game) => <CardGame key={game.id} game={game} />)}
       </div>
-    </>
+    </div>
   );
 }

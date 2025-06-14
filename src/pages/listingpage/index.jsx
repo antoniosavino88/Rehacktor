@@ -61,8 +61,8 @@ export default function ListingPage() {
     categoryData?.name ?? (type === "genres" ? value : `#${value}`);
 
   return (
-    <>
-      <h1 className="text-3xl font-bold text-text my-10 ms-10 capitalize">
+    <div className="px-60">
+      <h1 className="text-3xl font-bold text-text my-10 capitalize">
         {categoryName} games
       </h1>
 
@@ -85,6 +85,6 @@ export default function ListingPage() {
           onPageChange={(newPage) => setSearchParams({ page: newPage })}
         />
       )}
-    </>
+    </div>
   );
 }
