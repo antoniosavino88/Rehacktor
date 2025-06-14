@@ -15,8 +15,8 @@
   --color-text: #e5e7eb;
 
   /* Accent  */
-  --color-accent: #d4af0d;
-  --color-accent-hover: #c09408;
+  --color-accent: #ffc107;
+  --color-accent-hover: #cc9900;
 
   /* Focus */
   --color-focus: #f59e0b;
@@ -40,7 +40,7 @@
 
 h1 {
   font-family: "Aldrich", sans-serif;
-  text-shadow: #d4af0d 0px 0px 10px;
+  text-shadow: #ffc107 0px 0px 10px;
 }
 
 /* Nasconde la scrollbar ma consente lo scroll */

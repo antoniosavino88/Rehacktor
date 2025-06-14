@@ -4,6 +4,7 @@ import supabase from "../supabase/supabase-client";
 import SessionContext from "../context/SessionContext.js";
 import Searchbar from "./Searchbar.jsx";
 import AlertBanner from "./AlertBanner.jsx";
+import logo from "../assets/logo.png";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -37,9 +38,10 @@ export default function Header() {
       <nav className="bg-primary text-text px-4 py-3 shadow-md fixed top-0 left-0 right-0 z-10 w-full">
         <div className=" mx-auto flex items-center justify-between md:justify-normal gap-4 md:gap-8">
           {/* Logo */}
-          <div className="text-xl font-bold tracking-wide flex-shrink-0 text-accent hover:text-accent-hover transition">
-            <Link to="/" className="font-title">
-              Rehacktor
+          <div className="text-xl font-bold tracking-wide flex-shrink-0 text-accent hover:scale-105 transition">
+            <Link to="/">
+              <img src={logo} alt="" className="inline-block" />{" "}
+              <span className="font-title hidden md:inline">DailyRespawn</span>
             </Link>
           </div>
 
