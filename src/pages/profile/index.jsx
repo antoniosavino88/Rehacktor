@@ -9,7 +9,7 @@ export default function ProfilePage() {
   const { favorites, removeFavorite } = useContext(FavoritesContext);
 
   return (
-    <div className="container mx-auto px-4 py-6">
+    <div className="container mx-auto px-40 py-6">
       <h2 className="text-2xl font-semibold text-text mb-6 py-10 font-title">
         Ciao{" "}
         <span className="text-accent font-title">
