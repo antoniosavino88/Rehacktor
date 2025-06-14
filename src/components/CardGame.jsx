@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import LazyLoadGameImage from "../components/LazyLoadGameImage";
 import { Link } from "react-router-dom";
 import ToggleFavorite from "./ToggleFavorite";
@@ -8,8 +10,21 @@ export default function CardGame({ game }) {
   const genres = game.genres;
   const { session } = useContext(SessionContext);
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
+
   return (
-    <div className="flex justify-center my-3">
+    <motion.div
+      ref={ref}
+      className="flex justify-center my-3"
+      initial={{ opacity: 0, scale: 0 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{
+        duration: 1.5,
+        ease: [0.25, 0.1, 0.25, 1],
+        delay: 0.1,
+      }}
+    >
       <article className="bg-primary text-text rounded-xl overflow-hidden shadow-lg transform transition duration-300 hover:scale-104 hover:shadow-2xl max-w-sm w-full">
         <LazyLoadGameImage image={game.background_image} />
 
@@ -47,6 +62,6 @@ export default function CardGame({ game }) {
           </div>
         </div>
       </article>
-    </div>
+    </motion.div>
   );
 }
