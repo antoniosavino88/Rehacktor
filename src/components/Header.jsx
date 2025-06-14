@@ -1,26 +1,37 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import supabase from "../supabase/supabase-client";
 import SessionContext from "../context/SessionContext.js";
 import Searchbar from "./Searchbar.jsx";
 import AlertBanner from "./AlertBanner.jsx";
 import logo from "../assets/logo.png";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const navigate = useNavigate();
   const { session } = useContext(SessionContext);
   const [logoutMessage, setLogoutMessage] = useState("");
-
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const signOut = async () => {
@@ -53,7 +64,7 @@ export default function Header() {
             : "bg-primary backdrop-blur-none"
         }`}
       >
-        <div className=" mx-auto flex items-center justify-between md:justify-normal gap-4 md:gap-8">
+        <div className="mx-auto flex items-center justify-between md:justify-normal gap-4 md:gap-8">
           {/* Logo */}
           <div className="text-xl font-bold tracking-wide flex-shrink-0 text-accent hover:scale-105 transition">
             <Link to="/">
@@ -92,14 +103,19 @@ export default function Header() {
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center space-x-6 ml-auto">
             {session ? (
-              <li className="relative group">
-                <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-transparent hover:bg-tertiary transition font-semibold">
+              <li className="relative">
+                <button
+                  onClick={() => setIsDropdownOpen((prev) => !prev)}
+                  className="flex items-center gap-2 px-4 py-2 rounded-md bg-transparent hover:bg-tertiary transition font-semibold cursor-pointer"
+                >
                   Ciao{" "}
                   <span className="text-accent">
                     {session.user.user_metadata.first_name}
                   </span>
                   <svg
-                    className="w-4 h-4 group-hover:rotate-180 transition"
+                    className={`w-4 h-4 transition-transform ${
+                      isDropdownOpen ? "rotate-180" : ""
+                    }`}
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -108,38 +124,47 @@ export default function Header() {
                     <path d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <ul
-                  className={`absolute right-0 mt-2 w-40 rounded-md shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50 ${
-                    isScrolled
-                      ? "bg-primary/60 backdrop-blur-lg"
-                      : "bg-primary backdrop-blur-none"
-                  }`}
-                >
-                  <li>
-                    <Link
-                      to="/account"
-                      className="block px-4 py-2 hover:bg-tertiary transition"
+
+                <AnimatePresence>
+                  {isDropdownOpen && (
+                    <motion.ul
+                      initial={{ opacity: 0, y: -10, scaleY: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scaleY: 1 }}
+                      exit={{ opacity: 0, y: -10, scaleY: 0.95 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className={`absolute right-0 mt-3 w-40 origin-top rounded-md shadow-lg z-50 overflow-hidden text-center ${
+                        isScrolled
+                          ? "bg-primary/60 backdrop-blur-lg"
+                          : "bg-primary backdrop-blur-none"
+                      }`}
                     >
-                      Account
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/profile"
-                      className="block px-4 py-2 hover:bg-tertiary transition"
-                    >
-                      Profilo
-                    </Link>
-                  </li>
-                  <li>
-                    <button
-                      onClick={signOut}
-                      className="block w-full text-left text-error font-semibold px-4 py-2 hover:bg-tertiary transition cursor-pointer"
-                    >
-                      Logout
-                    </button>
-                  </li>
-                </ul>
+                      <li>
+                        <Link
+                          to="/account"
+                          className="block px-4 py-2 hover:bg-tertiary transition"
+                        >
+                          Account
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/profile"
+                          className="block px-4 py-2 hover:bg-tertiary transition"
+                        >
+                          Profilo
+                        </Link>
+                      </li>
+                      <li>
+                        <button
+                          onClick={signOut}
+                          className="block w-full text-error font-semibold px-4 py-2 hover:bg-tertiary transition cursor-pointer"
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
               </li>
             ) : (
               <>
