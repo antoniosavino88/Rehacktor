@@ -21,7 +21,7 @@ export default function Searchbar() {
     <form onSubmit={handleSearch} className="w-full max-w-5xl mx-auto">
       <fieldset
         role="group"
-        className="flex rounded-full overflow-hidden shadow-md bg-primary border border-tertiary focus-within:ring-2 focus-within:ring-accent"
+        className="flex rounded-full overflow-hidden shadow-md bg-primary/30 backdrop-blur-md border border-tertiary focus-within:ring-2 focus-within:ring-accent"
       >
         <input
           type="text"
@@ -30,7 +30,7 @@ export default function Searchbar() {
           onChange={(event) => setSearch(event.target.value)}
           value={search}
           aria-invalid={ariaInvalid}
-          className="w-full px-4 py-2 bg-primary text-text placeholder-gray-400 focus:outline-none"
+          className="w-full px-4 py-2 bg-transparent text-text placeholder-gray-400 focus:outline-none"
         />
         <button
           type="submit"

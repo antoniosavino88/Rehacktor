@@ -14,16 +14,12 @@ export default function Layout() {
       <Header />
 
       {/* Sidebar + Main Content */}
-      <main className="flex relative bg-gradient-to-b from-secondary to-primary pt-15">
+      <main className="flex relative bg-gradient-to-b from-secondary to-primary pt-15 w-full">
         {/* Sidebar */}
         <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 
         {/* Contenuto principale */}
-        <section
-          className={`style-main-content min-h-screen flex-1 transition-all duration-300 ${
-            isSidebarOpen ? "ml-0" : "ml-0"
-          }`}
-        >
+        <section className="style-main-content min-h-screen flex-1 transition-all duration-300 ml-0">
           <Outlet />
         </section>
       </main>

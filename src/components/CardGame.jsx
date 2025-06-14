@@ -28,7 +28,7 @@ export default function CardGame({ game }) {
             ))}
           </div>
 
-          <div className="flex">
+          <div className="flex justify-between">
             <p className="text-sm mb-4 italic">Rilasciato: {game.released}</p>
             {session && (
               <div className="flex justify-end">

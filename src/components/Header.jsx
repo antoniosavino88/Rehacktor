@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import supabase from "../supabase/supabase-client";
 import SessionContext from "../context/SessionContext.js";
 import Searchbar from "./Searchbar.jsx";
@@ -11,6 +11,17 @@ export default function Header() {
   const navigate = useNavigate();
   const { session } = useContext(SessionContext);
   const [logoutMessage, setLogoutMessage] = useState("");
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
@@ -35,7 +46,13 @@ export default function Header() {
           onClose={() => setLogoutMessage("")}
         />
       )}
-      <nav className="bg-primary text-text px-4 py-3 shadow-md fixed top-0 left-0 right-0 z-10 w-full">
+      <nav
+        className={`text-text px-4 py-3 shadow-md fixed top-0 left-0 right-0 z-10 w-full transition-all duration-300 ${
+          isScrolled
+            ? "bg-primary/60 backdrop-blur-lg"
+            : "bg-primary backdrop-blur-none"
+        }`}
+      >
         <div className=" mx-auto flex items-center justify-between md:justify-normal gap-4 md:gap-8">
           {/* Logo */}
           <div className="text-xl font-bold tracking-wide flex-shrink-0 text-accent hover:scale-105 transition">
@@ -76,7 +93,7 @@ export default function Header() {
           <ul className="hidden md:flex items-center space-x-6 ml-auto">
             {session ? (
               <li className="relative group">
-                <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-primary hover:bg-tertiary transition font-semibold">
+                <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-transparent hover:bg-tertiary transition font-semibold">
                   Ciao{" "}
                   <span className="text-accent">
                     {session.user.user_metadata.first_name}
@@ -91,7 +108,13 @@ export default function Header() {
                     <path d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <ul className="absolute right-0 mt-2 w-40 bg-primary rounded-md shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
+                <ul
+                  className={`absolute right-0 mt-2 w-40 rounded-md shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50 ${
+                    isScrolled
+                      ? "bg-primary/60 backdrop-blur-lg"
+                      : "bg-primary backdrop-blur-none"
+                  }`}
+                >
                   <li>
                     <Link
                       to="/account"

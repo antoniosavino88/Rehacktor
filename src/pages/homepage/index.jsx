@@ -7,8 +7,8 @@ export default function HomePage() {
   const { data, loading, error } = useFetchSolution(initialUrl);
 
   return (
-    <div className="px-60">
-      <h1 className="text-3xl font-bold text-text my-10 ">
+    <div className=" mx-10 lg:px-60">
+      <h1 className="text-3xl font-bold text-text my-10">
         Nuovi e di tendenza
       </h1>
 
