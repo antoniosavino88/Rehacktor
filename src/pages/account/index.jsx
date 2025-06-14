@@ -132,7 +132,7 @@ export default function AccountPage() {
           <button
             type="button"
             onClick={() => document.querySelector('input[type="file"]').click()}
-            className="px-4 py-2 text-sm font-medium text-primary bg-accent hover:bg-accent-hover rounded-lg transition cursor-pointer"
+            className="px-4 py-2 text-sm font-medium bg-primary border border-accent hover:bg-accent hover:text-primary text-accent rounded-lg transition cursor-pointer"
           >
             Cambia Avatar
           </button>

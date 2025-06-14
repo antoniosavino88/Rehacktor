@@ -45,7 +45,7 @@ export default function Chatbox({ data }) {
           />
           <button
             type="submit"
-            className="bg-accent hover:bg-accent-hover text-primary font-bold px-5 py-2 rounded-lg transition"
+            className="bg-primary border border-accent hover:bg-accent hover:text-primary text-accent font-bold px-5 py-2 rounded-lg transition cursor-pointer"
           >
             Invia
           </button>

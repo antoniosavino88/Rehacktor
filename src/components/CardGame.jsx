@@ -38,7 +38,7 @@ export default function CardGame({ game }) {
           <div className="flex justify-end">
             <Link
               to={`/games/${game.slug}/${game.id}`}
-              className="bg-accent hover:bg-accent-hover text-primary font-semibold py-1 px-3 rounded-lg transition duration-300"
+              className="bg-primary border border-accent hover:bg-accent hover:text-primary text-accent font-semibold py-1 px-3 rounded-lg transition duration-300"
             >
               Vai al gioco
             </Link>

@@ -51,7 +51,7 @@ export default function ProfilePage() {
                     <td className="px-6 py-4">
                       <Link
                         to={`/games/${game.game_slug}/${game.game_id}`}
-                        className="inline-block bg-accent hover:bg-accent-hover text-secondary font-semibold px-4 py-2 rounded-lg transition duration-300 shadow-sm"
+                        className="inline-blockbg-primary border border-accent hover:bg-accent hover:text-primary text-accent font-semibold px-4 py-2 rounded-lg transition duration-300 shadow-sm"
                       >
                         Vai al gioco
                       </Link>
