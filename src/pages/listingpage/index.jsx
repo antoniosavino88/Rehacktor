@@ -77,11 +77,14 @@ export default function ListingPage() {
         {data &&
           data.results.map((game) => <CardGame key={game.id} game={game} />)}
       </div>
-      <Pagination
-        currentPage={page}
-        hasNext={!!data?.next}
-        onPageChange={(newPage) => setSearchParams({ page: newPage })}
-      />
+
+      {data && (
+        <Pagination
+          currentPage={page}
+          hasNext={!!data?.next}
+          onPageChange={(newPage) => setSearchParams({ page: newPage })}
+        />
+      )}
     </>
   );
 }

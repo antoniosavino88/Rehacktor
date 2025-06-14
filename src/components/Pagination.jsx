@@ -32,7 +32,7 @@ export default function Pagination({ currentPage, hasNext, onPageChange }) {
         <button
           onClick={handlePrev}
           disabled={currentPage <= 1}
-          className="bg-accent hover:bg-accent-hover text-primary font-bold px-3 py-1 rounded disabled:opacity-50 cursor-pointer transition"
+          className="bg-primary border border-accent hover:bg-accent hover:text-primary text-accent font-bold px-3 py-1 rounded disabled:opacity-50 cursor-pointer transition"
         >
           ← Precedente
         </button>
@@ -42,7 +42,7 @@ export default function Pagination({ currentPage, hasNext, onPageChange }) {
         <button
           onClick={handleNext}
           disabled={!hasNext}
-          className="bg-accent hover:bg-accent-hover text-primary font-bold px-3 py-1 rounded disabled:opacity-50 cursor-pointer transition"
+          className="bg-primary border border-accent hover:bg-accent hover:text-primary text-accent font-bold px-3 py-1 rounded disabled:opacity-50 cursor-pointer transition"
         >
           Successiva →
         </button>
