@@ -84,7 +84,7 @@ export default function GamePage() {
             </div>
 
             {/* Chatbox */}
-            <div className="bg-primary/50 text-text rounded-2xl shadow-xl p-6">
+            <div className="bg-primary/50 text-text rounded-2xl m-6">
               <Chatbox data={data} />
             </div>
           </div>

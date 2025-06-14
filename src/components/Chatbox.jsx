@@ -28,8 +28,10 @@ export default function Chatbox({ data }) {
   };
 
   return (
-    <div className=" rounded-2xl p-6 w-full ">
-      <h4 className="text-xl font-bold text-accent mb-4">Gamers Chat</h4>
+    <div className=" rounded-2xl p-6 w-full border border-tertiary">
+      <h4 className="text-xl font-bold text-accent mb-4 font-title">
+        Gamers Chat
+      </h4>
 
       <RealimeChat data={data} />
 
