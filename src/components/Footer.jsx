@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import logoBig from "../assets/logoBig.png";
 
 export default function Footer() {
   return (
@@ -10,6 +11,7 @@ export default function Footer() {
           <p className="text-sm text-gray-400 italic">
             Dove ogni partita è una nuova storia
           </p>
+          <img src={logoBig} className="w-30 hidden lg:block" alt="" />
         </div>
 
         {/* Colonna 2 - Link utili */}
