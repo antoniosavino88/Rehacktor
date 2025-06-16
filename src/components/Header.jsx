@@ -30,8 +30,11 @@ export default function Header() {
         setIsDropdownOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const signOut = async () => {
@@ -103,7 +106,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center space-x-6 ml-auto">
             {session ? (
-              <li className="relative">
+              <li className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsDropdownOpen((prev) => !prev)}
                   className="flex items-center gap-2 px-4 py-2 rounded-md bg-transparent hover:bg-tertiary transition font-semibold cursor-pointer"
