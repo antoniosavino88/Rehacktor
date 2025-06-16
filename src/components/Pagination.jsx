@@ -34,17 +34,19 @@ export default function Pagination({ currentPage, hasNext, onPageChange }) {
           disabled={currentPage <= 1}
           className="bg-primary border border-accent hover:bg-accent hover:text-primary text-accent font-bold px-3 py-1 rounded disabled:opacity-50 cursor-pointer transition"
         >
-          ← Precedente
+          ←
         </button>
 
-        <span className="text-text">Pagina {currentPage}</span>
+        <span className="text-text mx-10">
+          Pagina <span className="font-bold text-accent">{currentPage}</span>
+        </span>
 
         <button
           onClick={handleNext}
           disabled={!hasNext}
           className="bg-primary border border-accent hover:bg-accent hover:text-primary text-accent font-bold px-3 py-1 rounded disabled:opacity-50 cursor-pointer transition"
         >
-          Successiva →
+          →
         </button>
       </motion.div>
     </AnimatePresence>

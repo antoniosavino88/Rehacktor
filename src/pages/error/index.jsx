@@ -1,13 +1,16 @@
 import img from "../../assets/notFound.png";
+
 export default function ErrorPage() {
   return (
-    <>
-      <h1 className="text-3xl font-bold text-text my-8 text-center">
-        Page not found
+    <div className="flex flex-col items-center justify-center px-4 py-12 min-h-screen text-center gap-20">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text mb-6 font-title">
+        404 - Page not found
       </h1>
-      <div className="flex justify-center items-center min-h-[400px] mt-30">
-        <img src={img} alt="" className=" max-w-[700px]" />
-      </div>
-    </>
+      <img
+        src={img}
+        alt="Pagina non trovata"
+        className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-auto"
+      />
+    </div>
   );
 }

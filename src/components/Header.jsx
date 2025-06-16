@@ -71,13 +71,13 @@ export default function Header() {
           {/* Logo */}
           <div className="text-xl font-bold tracking-wide flex-shrink-0 text-accent hover:scale-105 transition">
             <Link to="/">
-              <img src={logo} alt="" className="inline-block" />{" "}
+              <img src={logo} alt="" className="inline-block md:hidden" />{" "}
               <span className="font-title hidden md:inline">DailyRespawn</span>
             </Link>
           </div>
 
           {/* Searchbar */}
-          <div className="flex-1 order-3 md:order-none">
+          <div className="flex-1">
             <Searchbar />
           </div>
 
@@ -242,7 +242,7 @@ export default function Header() {
                   <li>
                     <Link
                       to="/register"
-                      className="block bg-accent hover:bg-accent-hover text-primary font-semibold px-4 py-2 rounded-md"
+                      className=" bg-accent hover:bg-accent-hover text-primary px-4 py-2 rounded-md"
                     >
                       Registrati
                     </Link>

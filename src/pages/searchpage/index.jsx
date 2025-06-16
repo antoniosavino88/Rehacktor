@@ -17,9 +17,9 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="px-60">
+    <div className="mx-10 lg:px-60">
       <h1 className="text-3xl font-bold text-text my-10">
-        Risultati per: {game} game
+        Risultati per: {game}
       </h1>
 
       {loading && (

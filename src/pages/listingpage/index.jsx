@@ -61,7 +61,7 @@ export default function ListingPage() {
     categoryData?.name ?? (type === "genres" ? value : `#${value}`);
 
   return (
-    <div className="px-60">
+    <div className="mx-10 lg:px-60">
       <h1 className="text-3xl font-bold text-text my-10 capitalize">
         {categoryName} games
       </h1>

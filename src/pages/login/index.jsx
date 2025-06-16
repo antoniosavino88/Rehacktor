@@ -78,7 +78,7 @@ export default function LoginPage() {
       <img
         src={bgLogin}
         alt="hero background"
-        className="absolute inset-0 w-full h-full object-cover object-center z-0"
+        className="absolute inset-0 w-full h-full object-cover lg:object-center object-right z-0"
       />
       {/* Overlay sfumato: nero con leggera tinta accent color */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-middle/80 to-primary backdrop-blur-sm"></div>
