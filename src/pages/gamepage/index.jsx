@@ -50,7 +50,7 @@ export default function GamePage() {
                 <p className="text-sm text-smooth italic">
                   Pubblicazione: {data.released}
                 </p>
-                <h1 className="text-4xl font-bold">{data.name}</h1>
+                <h1 className="md:text-4xl text-2xl font-bold">{data.name}</h1>
                 <p className="text-accent text-sm font-semibold">
                   ⭐ Rating: {data.rating}
                 </p>

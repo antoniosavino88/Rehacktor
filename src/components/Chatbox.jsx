@@ -28,24 +28,29 @@ export default function Chatbox({ data }) {
   };
 
   return (
-    <div className=" rounded-2xl p-6 w-full border border-tertiary">
-      <h4 className="text-xl font-bold text-accent mb-4 font-title">
+    <div className="flex flex-col rounded-2xl p-4 sm:p-6 w-full border border-tertiary overflow-hidden">
+      <h4 className="text-lg sm:text-xl font-bold text-accent mb-4 font-title">
         Gamers Chat
       </h4>
 
-      <RealimeChat data={data} />
+      <div className="overflow-y-auto max-h-[300px] sm:max-h-[400px] pr-2">
+        <RealimeChat data={data} />
+      </div>
 
       {session ? (
-        <form onSubmit={handleMessageSubmit} className="flex gap-2 mt-4">
+        <form
+          onSubmit={handleMessageSubmit}
+          className="flex flex-col sm:flex-row gap-2 mt-4"
+        >
           <input
             type="text"
             name="message"
             placeholder="Scrivi un messaggio..."
-            className="flex-1 px-4 py-2 rounded-lg bg-tertiary text-text placeholder:text-quaternary focus:outline-none focus:ring-2 focus:ring-focus"
+            className="flex-1 px-4 py-2 rounded-lg bg-tertiary text-text placeholder:text-quaternary focus:outline-none focus:ring-2 focus:ring-focus text-sm sm:text-base"
           />
           <button
             type="submit"
-            className="bg-primary border border-accent hover:bg-accent hover:text-primary text-accent font-bold px-5 py-2 rounded-lg transition cursor-pointer"
+            className="bg-primary border border-accent hover:bg-accent hover:text-primary text-accent font-bold px-4 sm:px-5 py-2 rounded-lg transition text-sm sm:text-base"
           >
             Invia
           </button>

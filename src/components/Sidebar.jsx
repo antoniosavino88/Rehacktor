@@ -6,7 +6,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
     <>
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-55 bg-opacity-primary text-text p-8 pt-15  overflow-y-auto mt-10 transform transition-transform duration-300 ease-in-out z-49 scrollbar-hide ${
+        className={`fixed top-0 left-0 h-screen w-55 bg-opacity-primary text-text p-8 pt-15 bg-primary lg:bg-inherit overflow-y-auto mt-10 transform transition-transform duration-300 ease-in-out z-49 scrollbar-hide ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -26,12 +26,12 @@ export default function Sidebar({ isOpen, setIsOpen }) {
         {isOpen ? <ChevronsLeft size={20} /> : <ChevronsRight size={20} />}
       </button>
       {/* Overlay (only on mobile) */}
-      {/* {isOpen && (
+      {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-black bg-opacity-50 z-1 transition-opacity md:hidden"
+          className="fixed inset-0 bg-primary/80 z-30 transition-opacity md:hidden"
         />
-      )} */}
+      )}
     </>
   );
 }

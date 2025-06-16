@@ -143,12 +143,12 @@ export default function AccountPage() {
               onClick={() =>
                 document.querySelector('input[type="file"]').click()
               }
-              className="px-4 py-2 text-sm font-medium bg-primary border border-accent hover:bg-accent hover:text-primary text-accent rounded-lg transition cursor-pointer"
+              className="px-4 py-2 text-sm font-medium border border-accent hover:bg-accent hover:text-primary text-accent rounded-lg transition cursor-pointer"
             >
               Cambia Avatar
             </button>
 
-            <p className="text-sm text-gray-400 text-center max-w-xs">
+            <p className="text-sm text-gray-400 text-center max-w-xs italic">
               Carica un'immagine di profilo
             </p>
           </div>

@@ -77,7 +77,7 @@ export default function RealtimeChat({ data }) {
             <span className="text-accent font-semibold">
               @{message.profile_username}
             </span>
-            <time className="text-xs text-quaternary italic">
+            <time className="text-xs text-quaternary italic hidden md:block">
               {dayjs().to(dayjs(message.updated_at))}
             </time>
           </header>
