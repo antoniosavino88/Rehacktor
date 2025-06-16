@@ -22,7 +22,7 @@ export default function HomePage() {
           className="absolute inset-0 w-full h-full object-cover object-center z-0"
         />
         {/* Overlay sfumato: nero con leggera tinta accent color */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-[#1b121b]/80 to-intersector backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-middle/80 to-intersector backdrop-blur-sm"></div>
 
         <div className="relative z-20 flex flex-col items-center justify-center text-center h-full text-text px-4 pb-20">
           <img src={logo} alt="" />

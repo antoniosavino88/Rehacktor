@@ -1,15 +1,18 @@
 import SessionProvider from "./context/SessionProvider";
 import FavoritesProvider from "./context/FavoritesProvider";
+import NotificationProvider from "./context/NotificationProvider";
 import "./global.css";
 import { Routing } from "./routes/Routing";
 
 function App() {
   return (
-    <SessionProvider>
-      <FavoritesProvider>
-        <Routing />
-      </FavoritesProvider>
-    </SessionProvider>
+    <NotificationProvider>
+      <SessionProvider>
+        <FavoritesProvider>
+          <Routing />
+        </FavoritesProvider>
+      </SessionProvider>
+    </NotificationProvider>
   );
 }
 

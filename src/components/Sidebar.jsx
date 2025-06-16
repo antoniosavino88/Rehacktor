@@ -6,7 +6,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
     <>
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen w-55 bg-opacity-primary text-text p-8 pt-15 shadow-lg overflow-y-auto mt-10 transform transition-transform duration-300 ease-in-out z-49 scrollbar-hide ${
+        className={`fixed top-0 left-0 h-screen w-55 bg-opacity-primary text-text p-8 pt-15  overflow-y-auto mt-10 transform transition-transform duration-300 ease-in-out z-49 scrollbar-hide ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

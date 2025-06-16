@@ -132,7 +132,7 @@ export default function Header() {
                       animate={{ opacity: 1, y: 0, scaleY: 1 }}
                       exit={{ opacity: 0, y: -10, scaleY: 0.95 }}
                       transition={{ duration: 0.2, ease: "easeOut" }}
-                      className={`absolute right-0 mt-3 w-40 origin-top rounded-md shadow-lg z-50 overflow-hidden text-center ${
+                      className={`absolute right-0 mt-3 w-38 origin-top rounded-b-md shadow-lg z-50 overflow-hidden text-center ${
                         isScrolled
                           ? "bg-primary/60 backdrop-blur-lg"
                           : "bg-primary backdrop-blur-none"
