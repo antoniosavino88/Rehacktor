@@ -10,7 +10,10 @@ export default function Layout() {
 
   return (
     <div className="style-layout-system">
+      {/* Componente logica scroll on top */}
       <ScrollToTop />
+
+      {/* Navbar */}
       <Header />
 
       {/* Sidebar + Main Content */}
@@ -23,7 +26,7 @@ export default function Layout() {
           <Outlet />
         </section>
       </main>
-
+      {/* Footer  */}
       <Footer />
     </div>
   );

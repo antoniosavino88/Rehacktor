@@ -34,7 +34,7 @@ export default function GamePage() {
             backgroundImage: `url(${data.background_image})`,
           }}
         >
-          {/* Overlay sfumato: nero con leggera tinta accent color */}
+          {/* Overlay sfumato*/}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-middle/80 to-primary backdrop-blur-sm"></div>
 
           {/* Contenuto centrale */}

@@ -16,7 +16,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
         <DropdownList type="publishers" />
         <DropdownList type="tags" />
       </aside>
-      {/* Toggle tab button (outside sidebar but follows it) */}
+      {/* Toggle tab button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`fixed top-16 z-49 h-8 w-10 px-3 flex items-center gap-1 bg-opacity-primary text-accent  rounded-r-lg shadow-lg transition-all duration-300 cursor-pointer hover:bg-tertiary ${
@@ -25,7 +25,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
       >
         {isOpen ? <ChevronsLeft size={20} /> : <ChevronsRight size={20} />}
       </button>
-      {/* Overlay (only on mobile) */}
+      {/* Overlay (mobile) */}
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}

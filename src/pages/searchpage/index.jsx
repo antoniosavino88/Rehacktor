@@ -34,7 +34,7 @@ export default function SearchPage() {
           data.results.map((game) => <CardGame key={game.id} game={game} />)}
       </div>
 
-      {/* Paginazione in fondo */}
+      {/* Paginazione */}
       {data && (
         <Pagination
           currentPage={page}

@@ -103,7 +103,7 @@ export default function AccountPage() {
         alt="hero background"
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
-      {/* Overlay sfumato: nero con leggera tinta accent color */}
+      {/* Overlay sfumato*/}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-middle/80 to-primary backdrop-blur-sm"></div>
       <div className="max-w-xl mx-auto  text-text p-6 rounded-2xl relative z-2">
         <h2 className="text-2xl font-bold mb-4 text-accent font-title">

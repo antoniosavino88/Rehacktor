@@ -51,6 +51,6 @@ export default function useFetchSolution(initialUrl) {
     loading,
     data,
     error,
-    updateUrl: setUrl, // se vuoi comunque usarlo manualmente
+    updateUrl: setUrl,
   };
 }

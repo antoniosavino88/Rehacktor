@@ -22,7 +22,7 @@ export default function Pagination({ currentPage, hasNext, onPageChange }) {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={currentPage} // re-trigger animation on page change
+        key={currentPage}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
