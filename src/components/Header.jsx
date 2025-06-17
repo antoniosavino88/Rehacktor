@@ -4,7 +4,7 @@ import supabase from "../supabase/supabase-client";
 import SessionContext from "../context/SessionContext.js";
 import Searchbar from "./Searchbar.jsx";
 import AlertBanner from "./AlertBanner.jsx";
-import logo from "../assets/logo.png";
+import logo from "../assets/logoBig.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
@@ -71,7 +71,11 @@ export default function Header() {
           {/* Logo */}
           <div className="text-xl font-bold tracking-wide flex-shrink-0 text-accent hover:scale-105 transition">
             <Link to="/">
-              <img src={logo} alt="" className="inline-block md:hidden me-3" />{" "}
+              <img
+                src={logo}
+                alt=""
+                className="inline-block md:hidden me-3 w-[40px]"
+              />{" "}
               <span className="font-title hidden md:inline">DailyRespawn</span>
             </Link>
           </div>
