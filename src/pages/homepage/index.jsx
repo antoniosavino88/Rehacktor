@@ -6,6 +6,7 @@ import CardGame from "../../components/CardGame";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import bgHero from "../../assets/home.jpg";
 import logo from "../../assets/logoBig.png";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
   const initialUrl = `https://api.rawg.io/api/games?key=2a8cb120892248bd952e976161641d53&dates=2024-01-01,2024-12-31&page=1`;
@@ -21,29 +22,50 @@ export default function HomePage() {
           alt="hero background"
           className="absolute inset-0 w-full h-full object-cover object-center z-0"
         />
-        {/* Overlay sfumato: nero con leggera tinta accent color */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-middle/80 to-intersector backdrop-blur-sm"></div>
 
         <div className="relative z-20 flex flex-col items-center justify-center text-center h-full text-text px-4 pb-20">
-          <img src={logo} alt="" />
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
+          {/* Animated Logo */}
+          <motion.img
+            src={logo}
+            alt="DailyRespawn Logo"
+            initial={{ opacity: 0, scale: 0.8, y: -40 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1.8, ease: "easeOut" }}
+          />
+
+          {/* Animated Title */}
+          <motion.h1
+            className="text-4xl md:text-5xl font-extrabold pb-12"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 1.8, ease: "easeOut" }}
+          >
             Benvenuto su DailyRespawn
-          </h1>
-          {session ? (
-            <Link
-              to="/profile"
-              className="bg-transparent border border-accent hover:bg-accent hover:text-primary text-accent font-semibold px-6 py-3 rounded-lg transition duration-300"
-            >
-              Vai al tuo profilo
-            </Link>
-          ) : (
-            <Link
-              to="/register"
-              className="bg-transparent border border-accent hover:bg-accent hover:text-primary text-accent font-semibold px-6 py-3 rounded-lg transition duration-300"
-            >
-              Registrati ora!
-            </Link>
-          )}
+          </motion.h1>
+
+          {/* Animated CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 1.8, ease: "easeOut" }}
+          >
+            {session ? (
+              <Link
+                to="/profile"
+                className="bg-transparent border border-accent hover:bg-accent hover:text-primary text-accent font-semibold px-6 py-3 rounded-lg transition duration-300"
+              >
+                Vai al tuo profilo
+              </Link>
+            ) : (
+              <Link
+                to="/register"
+                className="bg-transparent border border-accent hover:bg-accent hover:text-primary text-accent font-semibold px-6 py-3 rounded-lg transition duration-300"
+              >
+                Registrati ora!
+              </Link>
+            )}
+          </motion.div>
         </div>
       </section>
 

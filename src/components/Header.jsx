@@ -192,7 +192,7 @@ export default function Header() {
                     to="/login"
                     className="px-4 py-2 text-accent hover:text-accent-hover transition"
                   >
-                    Login
+                    Accedi
                   </Link>
                 </li>
                 <li>
