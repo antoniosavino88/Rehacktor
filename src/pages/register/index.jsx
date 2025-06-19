@@ -27,6 +27,7 @@ export default function RegisterPage() {
   const onSubmit = async (event) => {
     event.preventDefault();
     setFormSubmitted(true);
+
     const { error, data } = ConfirmSchema.safeParse(formState);
     if (error) {
       const errors = getErrors(error);
@@ -34,7 +35,31 @@ export default function RegisterPage() {
       return;
     }
 
-    let { error: signUpError } = await supabase.auth.signUp({
+    // Controllo unicità username
+    const { data: existingUsername, error: fetchUsernameError } = await supabase
+      .from("profiles")
+      .select("username")
+      .eq("username", data.username)
+      .single();
+
+    if (existingUsername) {
+      setFormErrors((prev) => ({
+        ...prev,
+        username: "Questo username è già in uso.",
+      }));
+      return;
+    }
+
+    if (fetchUsernameError && fetchUsernameError.code !== "PGRST116") {
+      setAlert({
+        message: "Errore durante la verifica dello username.",
+        type: "error",
+      });
+      return;
+    }
+
+    // Procedi con la registrazione
+    const { error: signUpError } = await supabase.auth.signUp({
       email: data.email,
       password: data.password,
       options: {
@@ -47,17 +72,28 @@ export default function RegisterPage() {
     });
 
     if (signUpError) {
-      setAlert({
-        message: "Errore durante la registrazione!",
-        type: "error",
-      });
-    } else {
-      setAlert({
-        message: "Registrazione completata con successo!",
-        type: "success",
-      });
-      setTimeout(() => navigate("/"), 1500);
+      if (signUpError.message.toLowerCase().includes("already registered")) {
+        setFormErrors((prev) => ({
+          ...prev,
+          email: "Questa email è già registrata.",
+        }));
+      } else {
+        setAlert({
+          message: "Errore durante la registrazione!",
+          type: "error",
+        });
+      }
+      return;
     }
+
+    setAlert({
+      message: "Registrazione completata con successo!",
+      type: "success",
+    });
+
+    setTimeout(() => {
+      navigate("/");
+    }, 1500);
   };
 
   const onBlur = (property) => () => {
