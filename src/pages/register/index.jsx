@@ -255,7 +255,7 @@ export default function RegisterPage() {
             type="submit"
             className="w-full bg-accent hover:bg-accent-hover text-primary font-semibold py-2 px-4 rounded-md transition duration-300 cursor-pointer"
           >
-            Registrati
+            Registrati!!!!!
           </button>
         </form>
       </div>
