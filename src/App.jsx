@@ -1,3 +1,4 @@
+import { BrowserRouter } from "react-router-dom";
 import SessionProvider from "./context/SessionProvider";
 import FavoritesProvider from "./context/FavoritesProvider";
 import NotificationProvider from "./context/NotificationProvider";

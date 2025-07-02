@@ -4,6 +4,7 @@ import SessionContext from "../../context/SessionContext.js";
 import Avatar from "../../components/Avatar.jsx";
 import AlertBanner from "../../components/AlertBanner.jsx";
 import bgAccount from "../../assets/account.webp";
+import { useNavigate } from "react-router";
 
 export default function AccountPage() {
   const { session } = useContext(SessionContext);
@@ -15,6 +16,9 @@ export default function AccountPage() {
   const [avatar_url, setAvatarUrl] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     let ignore = false;
@@ -96,6 +100,29 @@ export default function AccountPage() {
     setLoading(false);
   };
 
+  const deleteProfile = async () => {
+    const { error } = await supabase
+      .from("profiles")
+      .update({ is_active: false })
+      .eq("id", session.user.id);
+
+    if (error) {
+      setErrorMessage("Errore durante la disattivazione dell'account.");
+    } else {
+      setShowDeleteModal(false); // chiudi la modale
+      setSuccessMessage(
+        "Account eliminato con successo. Verrai disconnesso..."
+      );
+
+      // Aspetta 2 secondi prima di effettuare logout e redirect
+      setTimeout(async () => {
+        await supabase.auth.signOut();
+        // evita redirect immediato: lascia che il componente SessionProvider gestisca il logout
+        navigate("/");
+      }, 4000);
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-6 min-h-screen">
       <img
@@ -123,6 +150,32 @@ export default function AccountPage() {
             message={errorMessage}
             onClose={() => setErrorMessage("")}
           />
+        )}
+
+        {showDeleteModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="bg-primary text-text p-6 rounded-xl shadow-lg w-full max-w-md space-y-4">
+              <h3 className="text-xl font-semibold">Conferma eliminazione</h3>
+              <p>
+                Sei sicuro di voler eliminare il tuo account? Questa azione è
+                irreversibile.
+              </p>
+              <div className="flex justify-end gap-4">
+                <button
+                  onClick={() => setShowDeleteModal(false)}
+                  className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition  cursor-pointer"
+                >
+                  Annulla
+                </button>
+                <button
+                  onClick={deleteProfile}
+                  className="px-4 py-2 bg-error hover:bg-error-hover text-text font-semibold rounded transition cursor-pointer"
+                >
+                  Sì, elimina
+                </button>
+              </div>
+            </div>
+          </div>
         )}
 
         <form onSubmit={updateProfile} className="space-y-4">
@@ -226,6 +279,17 @@ export default function AccountPage() {
               className="w-full px-4 py-2 bg-accent hover:bg-accent-hover text-secondary font-semibold rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {loading ? "Caricamento ..." : "Aggiorna profilo"}
+            </button>
+          </div>
+
+          {/* Delete Button */}
+          <div className="pt-2">
+            <button
+              type="button"
+              onClick={() => setShowDeleteModal(true)}
+              className="w-full px-4 py-2 bg-error hover:bg-error-hover text-secondary font-semibold rounded-md transition cursor-pointer"
+            >
+              Elimina profilo
             </button>
           </div>
         </form>

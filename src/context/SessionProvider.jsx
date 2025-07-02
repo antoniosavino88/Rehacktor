@@ -25,6 +25,29 @@ export default function SessionProvider({ children }) {
     };
   }, []);
 
+  useEffect(() => {
+    const checkIfDeactivated = async () => {
+      if (!session?.user) return;
+
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("is_active")
+        .eq("id", session.user.id)
+        .single();
+
+      if (error) {
+        console.warn("Errore nel controllo is_active:", error.message);
+        return;
+      }
+
+      if (data?.is_active === false) {
+        await supabase.auth.signOut();
+      }
+    };
+
+    checkIfDeactivated();
+  }, [session]);
+
   return (
     <SessionContext.Provider
       value={{

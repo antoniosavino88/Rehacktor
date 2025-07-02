@@ -40,11 +40,30 @@ export default function LoginPage() {
           type: "error",
         });
       } else {
-        setAlert({
-          message: "Accesso riuscito!",
-          type: "success",
-        });
-        setTimeout(() => navigate("/"), 1500);
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+
+        const { data: profile, error: profileError } = await supabase
+          .from("profiles")
+          .select("is_active")
+          .eq("id", user.id)
+          .single();
+
+        if (profileError || profile?.is_active === false) {
+          await supabase.auth.signOut();
+
+          setAlert({
+            message: "Account disattivato, impossibile effettuare l'accesso.",
+            type: "error",
+          });
+        } else {
+          setAlert({
+            message: "Accesso riuscito!",
+            type: "success",
+          });
+          setTimeout(() => navigate("/"), 1500);
+        }
       }
     }
   };
